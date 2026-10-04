@@ -24,6 +24,7 @@ from intent_grasp.paths import REPO_ROOT
 sys.path.insert(0, str(REPO_ROOT / "figures" / "presentation"))
 sys.path.insert(0, str(REPO_ROOT / "figures" / "readme"))
 import fig_data as fd  # noqa: E402
+import rgbd  # noqa: E402
 import scene3d as s3  # noqa: E402
 from make_readme_figures import (BLUE, HAIRLINE, INK, INK_2, INK_3, ORANGE, SURFACE,  # noqa: E402
                                  save, title)
@@ -31,7 +32,7 @@ from make_readme_figures import (BLUE, HAIRLINE, INK, INK_2, INK_3, ORANGE, SURF
 EXP = fd.DEFAULT_EXP_DIR
 CHOSEN = s3.EXECUTED_CANDIDATE
 FINGERTIP = 0.1034          # Contact-GraspNet: fingertips this far along the approach axis
-CAM_HIGH = dict(kind="perspective", elevation_deg=38.0, azimuth_deg=240.0, fov_deg=30.0)
+CAM_HIGH = dict(kind="perspective", elevation_deg=48.0, azimuth_deg=220.0, fov_deg=30.0)
 
 
 def target_marker(ax, x, y):
@@ -69,21 +70,24 @@ def panel_camera(ax, cap, g):
 
 def panel_grasps(ax, cloud, cand):
     c = cand.aff_center_3d
-    near = cloud[np.linalg.norm(cloud[:, :2] - c[:2], axis=1) < 0.15]
-    table_z = np.percentile(near[:, 2], 20)
-    near = near[near[:, 2] > table_z - 0.02]
-    on_mug = near[:, 2] > table_z + 0.006
+    # the run's own RGB-D frame, back-projected so every point keeps its real colour
+    pts, cols, _ = rgbd.backproject(rgbd.load(EXP + "/head_capture_real.npz"))
+    sel = np.linalg.norm(pts[:, :2] - c[:2], axis=1) < 0.15
+    table_z = np.percentile(pts[sel, 2], 20)
+    sel &= pts[:, 2] > table_z - 0.02
+    pts, cols = pts[sel], cols[sel]
     W = H = 1000
     view, proj, _ = s3.view_and_projection(CAM_HIGH, c, 0.75, aspect=1.0)
-    px, py, ok = project(near, view, proj, W, H)
-    ax.scatter(px[ok & ~on_mug], py[ok & ~on_mug], s=0.6, color="#dedcd6", linewidths=0, rasterized=True)
-    ax.scatter(px[ok & on_mug], py[ok & on_mug], s=0.9, color=INK_2, linewidths=0, rasterized=True)
+    px, py, depth, ok = s3.project_points(pts, view, proj, W, H)
+    order = np.argsort(-depth[ok])                       # far points first, near points on top
+    ax.scatter(px[ok][order], py[ok][order], s=3.0, c=cols[ok][order], linewidths=0, rasterized=True)
+    on_mug = ok & (pts[:, 2] > table_z + 0.006)
 
     tips = np.array([T[:3, 3] + T[:3, 2] * FINGERTIP for T in cand.poses])
     tx, ty, _ = project(tips, view, proj, W, H)
     others = np.arange(len(tips)) != CHOSEN
-    ax.scatter(tx[others], ty[others], s=34, color=INK_3, edgecolors=SURFACE, linewidths=1.2, zorder=4)
-    xs, ys = [px[ok & on_mug], tx], [py[ok & on_mug], ty]
+    ax.scatter(tx[others], ty[others], s=38, color="white", edgecolors=INK, linewidths=1.0, zorder=4)
+    xs, ys = [px[on_mug], tx], [py[on_mug], ty]
     for p0, p1 in gripper_lines(cand.poses[CHOSEN]):
         qx, qy, _ = project(np.array([p0, p1]), view, proj, W, H)
         xs.append(qx); ys.append(qy)
@@ -95,7 +99,7 @@ def panel_grasps(ax, cloud, cand):
     ax.set_aspect("equal")
     ax.axis("off")
     return ("(b) point cloud: 25 grasp candidates",
-            f"Grey dots: where each candidate's fingers close.\nBlue: candidate {CHOSEN}, the one executed.\n"
+            f"White dots: where each candidate's fingers close.\nBlue: candidate {CHOSEN}, the one executed.\n"
             "One head-camera view, so only the near side exists.")
 
 
@@ -144,9 +148,10 @@ def panel_robot(ax, scene):
     W, H = 900, 900
     view, proj, _ = s3.view_and_projection(s3.CAM_ISO, center, 2.3, aspect=1.0)
     rgba = s3.mask_transparent_background(s3.render_robot(client, W, H, view, proj))
-    near = scene.cloud[np.linalg.norm(scene.cloud[:, :2] - scene.target[:2], axis=1) < 0.6]
-    px, py, ok = project(near, view, proj, W, H)
-    ax.scatter(px[ok], py[ok], s=0.5, color=INK_3, alpha=0.6, linewidths=0, rasterized=True, zorder=1)
+    near, cols = rgbd.scene_near(EXP + "/head_capture_real.npz", scene.target, 0.6)
+    px, py, depth, ok = s3.project_points(near, view, proj, W, H)
+    o = np.argsort(-depth[ok])
+    ax.scatter(px[ok][o], py[ok][o], s=1.6, c=cols[ok][o], linewidths=0, rasterized=True, zorder=1)
     ax.imshow(rgba, zorder=2)
     tx, ty, _ = project(scene.target, view, proj, W, H)
     target_marker(ax, tx, ty)
@@ -154,7 +159,7 @@ def panel_robot(ax, scene):
     ax.set_ylim(H - 40, 80)
     ax.axis("off")
     return ("(d) the HSR at that pose, from its URDF",
-            f"Base pose and joint angles are the planner's\nsolution for candidate {CHOSEN}; grey: point cloud.")
+            f"The planner's base pose and joint angles for\ncandidate {CHOSEN}, over the real-colour point cloud.")
 
 
 def main():

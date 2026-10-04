@@ -1,7 +1,6 @@
 """Picture-first figures for the README, each drawn from recorded data.
 
     scenes.png          the head-camera RGB-D scenes the reasoning was tested on
-    handle_gate.png     the real mug point cloud split into parts, and why the handle is refused
     motion.png          the HSR's URDF at each commanded stage of one run, onion-skinned
     grips.png           one object, different tasks: the grip parameters drawn to scale
 
@@ -21,7 +20,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, Rectangle
 
-from intent_grasp import som_part_selection as sps
 from intent_grasp.paths import REPO_ROOT, WORKSPACE
 
 sys.path.insert(0, str(REPO_ROOT / "figures" / "presentation"))
@@ -87,100 +85,6 @@ def fig_scenes():
 
 
 # --------------------------------------------------------------------------
-# 2. Why the mug handle is refused
-# --------------------------------------------------------------------------
-GATE_N, GATE_MM = 60, 6
-PART_STYLE = {
-    "main_body": ("body", "#9a9893"),
-    "top_protrusion": ("rim", BLUE),
-    "lateral_protrusion": ("handle piece 1", ORANGE),
-    "lateral_protrusion_1": ("handle piece 2", "#b8471f"),
-}
-
-
-def fig_handle_gate():
-    cap = WORKSPACE / "captures_pairs_2" / "cap_mug_head_near.npz"
-    rgb, comp, desc, K, extr = sps._load_and_isolate(str(cap))
-
-    fig = plt.figure(figsize=(15, 6.4))
-    title(fig, "Why the robot refuses to grab this mug by its handle",
-          "Real head-camera capture. The point cloud is split into parts; a part needs "
-          f"{GATE_N} points and {GATE_MM} mm of width before the robot will trust it.")
-
-    # left: the camera view, cropped around the mug
-    allp = np.vstack(list(comp.values()))
-    from intent_grasp.part_adaptive import project_points_to_pixels
-    u, v, _, valid = project_points_to_pixels(allp, K, extr)
-    cx, cy = np.median(u[valid]), np.median(v[valid])
-    r = 95
-    x0, y0 = int(max(cx - r, 0)), int(max(cy - r * 0.8, 0))
-    axl = fig.add_axes([0.01, 0.08, 0.30, 0.68])
-    axl.imshow(rgb[y0:int(cy + r * 0.8), x0:int(cx + r)])
-    axl.axis("off")
-    fig.text(0.01, 0.79, "(a) what the camera sees", fontsize=11)
-
-    # middle: the same mug as parts
-    axm = fig.add_axes([0.33, 0.08, 0.34, 0.68])
-    center = allp.mean(axis=0)
-    extent = float(np.linalg.norm(np.ptp(allp, axis=0))) * 1.6
-    cam = dict(kind="perspective", elevation_deg=30.0, azimuth_deg=200.0, fov_deg=35.0)
-    view, proj, _ = s3.view_and_projection(cam, center, extent, aspect=1.0)
-    W = H = 1000
-    xs, ys = [], []
-    for name in ["main_body", "top_protrusion", "lateral_protrusion", "lateral_protrusion_1"]:
-        if name not in comp:
-            continue
-        lab, col = PART_STYLE[name]
-        px, py, _, ok = s3.project_points(comp[name], view, proj, W, H)
-        big = name.startswith("lateral")
-        axm.scatter(px[ok], py[ok], s=16 if big else 7, color=col, linewidths=0, zorder=3 if big else 2)
-        xs.append(px[ok]); ys.append(py[ok])
-        d = desc[name]
-        mx, my = np.median(px[ok]), np.median(py[ok])
-        txt = f"{lab}\n{d['n']} points, {d['closing_width_mm']} mm wide"
-        if d["evidence"] == "NOISE":
-            txt += "\nrefused"
-        dx = {"main_body": -330, "top_protrusion": 40, "lateral_protrusion": 200,
-              "lateral_protrusion_1": -240}[name]
-        dy = {"main_body": 230, "top_protrusion": -150, "lateral_protrusion": -170,
-              "lateral_protrusion_1": -110}[name]
-        axm.annotate(txt, xy=(mx, my), xytext=(mx + dx, my + dy), fontsize=9.5,
-                     color=ORANGE if d["evidence"] == "NOISE" else INK, ha="center", va="center",
-                     arrowprops=dict(arrowstyle="-", color=INK_3, lw=0.8))
-    xs, ys = np.concatenate(xs), np.concatenate(ys)
-    axm.set_xlim(xs.min() - 300, xs.max() + 300)
-    axm.set_ylim(ys.max() + 220, ys.min() - 220)
-    axm.set_aspect("equal")
-    axm.axis("off")
-    fig.text(0.33, 0.79, "(b) the same mug as a point cloud, split into parts", fontsize=11)
-
-    # right: the gate, as two fill bars per part
-    axr = fig.add_axes([0.72, 0.18, 0.26, 0.5])
-    names = [n for n in ["main_body", "top_protrusion", "lateral_protrusion", "lateral_protrusion_1"] if n in desc]
-    for i, name in enumerate(names):
-        d = desc[name]
-        y = len(names) - 1 - i
-        lab, col = PART_STYLE[name]
-        frac = min(d["n"] / GATE_N, 1.0)
-        axr.add_patch(Rectangle((0, y - 0.18), 1.0, 0.36, color=PANEL, lw=0))
-        axr.add_patch(Rectangle((0, y - 0.18), frac, 0.36, color=col, lw=0))
-        axr.text(-0.04, y, lab, ha="right", va="center", fontsize=10)
-        verdict = {"ok": "trusted", "LOW": "usable, weak evidence"}.get(
-            d["evidence"], f"{d['n']}/{GATE_N} points: refused")
-        axr.text(1.04, y, verdict, ha="left", va="center", fontsize=9,
-                 color=ORANGE if d["evidence"] == "NOISE" else INK_2)
-    axr.axvline(1.0, color=INK, lw=1)
-    axr.set_xlim(0, 1.0)
-    axr.set_ylim(-0.6, len(names) - 0.4)
-    axr.axis("off")
-    fig.text(0.72, 0.79, f"(c) points against the {GATE_N}-point gate", fontsize=11)
-    fig.text(0.72, 0.12, "Seen from the side, the handle comes back as two thin\n"
-             "slivers. Rather than guess, the robot declines to use it.",
-             fontsize=9, color=INK_2, va="top")
-    save(fig, "handle_gate")
-
-
-# --------------------------------------------------------------------------
 # 3. Motion, onion-skinned
 # --------------------------------------------------------------------------
 STOW = {"arm_lift_joint": 0.0, "arm_flex_joint": 0.0, "arm_roll_joint": 0.0,
@@ -215,11 +119,13 @@ def fig_motion():
     fig = plt.figure(figsize=(15, 7.6))
     title(fig, "How the robot moved in the 7 Aug run",
           "The HSR's URDF posed at each commanded stage and drawn on top of each other: "
-          "fainter = earlier. Grey dots are the real point cloud.")
+          "fainter = earlier, over the real-colour point cloud.")
     ax = fig.add_axes([0.0, 0.0, 0.72, 0.84])
-    near = scene.cloud[np.linalg.norm(scene.cloud[:, :2] - scene.target[:2], axis=1) < 0.55]
-    px, py, _, ok = s3.project_points(near, view, proj, W, H)
-    ax.scatter(px[ok], py[ok], s=0.5, color=INK_3, alpha=0.5, linewidths=0, rasterized=True)
+    import rgbd
+    near, cols = rgbd.scene_near(EXP + "/head_capture_real.npz", scene.target, 0.55)
+    px, py, depth, ok = s3.project_points(near, view, proj, W, H)
+    o = np.argsort(-depth[ok])
+    ax.scatter(px[ok][o], py[ok][o], s=1.6, c=cols[ok][o], linewidths=0, rasterized=True)
     alphas = [0.22, 0.38, 0.6, 1.0]
     for layer, a in zip(layers, alphas):
         img = layer.astype(float) / 255
@@ -304,6 +210,5 @@ def fig_grips():
 
 if __name__ == "__main__":
     fig_scenes()
-    fig_handle_gate()
     fig_motion()
     fig_grips()

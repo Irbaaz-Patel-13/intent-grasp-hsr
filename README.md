@@ -6,9 +6,13 @@ Say "I'd like a hot drink" and the robot has to work out that it wants the red m
 
 The starting point was the AffordGrasp paper by Tang et al. (IROS 2025, [arXiv:2503.00778](https://arxiv.org/abs/2503.00778)). I reimplemented its reasoning idea, then spent most of the project on the parts that broke when I moved it onto real hardware. This is an independent project and isn't affiliated with the paper's authors.
 
-[![The HSR running the full pipeline, sped up 4x](docs/media/hsr_demo_preview.gif)](docs/media/hsr_demo.mp4)
+<p align="center">
+  <a href="docs/media/hsr_demo.mp4">
+    <img src="docs/media/hsr_demo_preview.gif" alt="The HSR running the full pipeline, sped up 4x" width="720">
+  </a>
+</p>
 
-The robot running the whole pipeline on the real mug, sped up four times: perception, driving to the chosen base pose, positioning the arm, visual-servo alignment from the hand camera, then the grasp and lift. Click it for the full 96-second video.
+<p align="center"><em>The robot running the whole pipeline on the real mug, sped up four times: perception, driving to the chosen base pose, positioning the arm, visual-servo alignment from the hand camera, then the grasp and lift. Click it for the full 96-second video.</em></p>
 
 ![Pipeline from instruction to verified lift](docs/images/pipeline.png)
 
@@ -51,9 +55,13 @@ Asking LangSAM for a part ("handle", "sides", "middle section") gave back a mask
 
 ![LangSAM part masks collapse onto the object](docs/images/part_grounding.png)
 
-Finding the part from the point cloud has its own limit, and it's set by the sensor. Seen side-on from the head camera, the mug's handle comes back as two thin slivers of 53 and 36 points. Both fall under the 60-point, 6 mm evidence gate, so the robot refuses to use the handle instead of guessing at it:
+Finding the part from the point cloud has its own limit, and it's set by the sensor. On the mug, the shiny rim and the top of the handle return no depth at all. The part finder still picks up two small side pieces, one where the handle meets the rim and one on the opposite edge of the rim. At 53 and 36 points they fall under the 60-point, 6 mm evidence gate, so the robot refuses them instead of guessing:
 
-![The real mug point cloud split into parts, with the handle refused](docs/images/handle_gate.png)
+![Where depth came back empty on the mug, and the parts found in what remained](docs/images/handle_gate.png)
+
+Moving the camera closer helps where the sensor is the bottleneck. Re-running the decomposition on far and near captures of four objects turned the knife's and the remote's smallest parts from weak into trusted, and found the pot that the far view missed. The mug didn't improve, because its problem is the missing depth, not distance:
+
+![The part decomposition re-run on far and near captures](docs/images/viewpoint.png)
 
 ### The prompt decides what gets handed over
 
@@ -103,7 +111,7 @@ Trials 1 and 3 ended in aborts whose cause I never confirmed, so they stay marke
 ## Limitations
 
 - `temperature=0` doesn't make GPT-4o deterministic. Two identical runs disagreed during development, which is why `vlm_stability.py` exists and why the numbers above come from five repeats instead of one pass.
-- The geometric decomposition only sees what the depth camera resolves. Thin parts like a mug handle seen edge-on can fall under the evidence floor (60 points or 6 mm), and then the system refuses instead of guessing.
+- The geometric decomposition only sees what the depth camera returns. Shiny or thin surfaces, like the mug's rim and the top of its handle, can come back with no depth at all, and small parts fall under the evidence floor (60 points or 6 mm). Then the system refuses instead of guessing.
 - The hardware trials used one object (the red mug) on one table. The clutter scenes were tested for perception and reasoning, not for full grasp execution.
 - On the knife, the decomposition labels the two ends the wrong way round, because the axis sign isn't tied to anything physical. The fix is worked out but not implemented.
 - Trial 8 has no record in `trials.csv`. I left the gap rather than renumbering.
@@ -175,7 +183,8 @@ To rebuild the figures from the recorded data:
 ```bash
 python ../figures/readme/make_readme_figures.py         # the charts in this README
 python ../figures/readme/make_run_figure.py             # the one-real-run figure
-python ../figures/readme/make_story_figures.py          # scenes, handle gate, motion, grips
+python ../figures/readme/make_story_figures.py          # scenes, motion, grips
+python ../figures/readme/make_cloud_figures.py          # depth-gap and near/far viewpoint figures
 python ../figures/presentation/fig01_acquisition.py   # likewise fig02..fig12, then fig13
 python ../figures/dissertation/fig_5_1_mask_coverage.py
 ```
