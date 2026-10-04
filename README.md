@@ -150,6 +150,7 @@ To rebuild the figures from the recorded data:
 
 ```bash
 python ../figures/readme/make_readme_figures.py         # the charts in this README
+python ../figures/readme/make_run_figure.py             # the one-real-run figure
 python ../figures/presentation/fig01_acquisition.py   # likewise fig02..fig12, then fig13
 python ../figures/dissertation/fig_5_1_mask_coverage.py
 ```
