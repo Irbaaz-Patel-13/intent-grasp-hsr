@@ -1,0 +1,39 @@
+{
+  "pour me a coffee": {
+    "target_object": "red mug",
+    "target_part": "handle",
+    "constraints": {
+      "keep_clear": [
+        "rim"
+      ],
+      "keep_clear_reasons": [
+        "Covering this would block the liquid's exit path."
+      ],
+      "post_grasp_motion": "tilt_pour",
+      "stability_priority": "high",
+      "thermal_or_hygiene": "hot surface"
+    }
+  },
+  "move this out of the way": {
+    "target_object": "mug",
+    "target_part": "handle",
+    "constraints": {
+      "keep_clear": [],
+      "keep_clear_reasons": [],
+      "post_grasp_motion": "translate",
+      "stability_priority": "med",
+      "thermal_or_hygiene": null
+    }
+  },
+  "hand me the mug": {
+    "target_object": "mug",
+    "target_part": "handle",
+    "constraints": {
+      "keep_clear": [],
+      "keep_clear_reasons": [],
+      "post_grasp_motion": "handover",
+      "stability_priority": "med",
+      "thermal_or_hygiene": "hot liquid"
+    }
+  }
+}

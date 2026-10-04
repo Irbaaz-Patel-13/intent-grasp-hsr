@@ -1,0 +1,11 @@
+components found: ['lateral_protrusion', 'main_body', 'rim_ring', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+wrote crop (as SENT, upscaled) -> report_assets/figures/fig_stage3c_point_remote_hand.png  origin=(87, 313)  original_size=(393, 119)  sent_size=(1024, 310)
+
+outcome: SELECTED  note=
+raw normalised points (0-1000): [[200, 500], [800, 500], [500, 500]]
+full-image points (col,row): [(165.60000000000002, 372.5), (401.40000000000003, 372.5), (283.5, 372.5)]
+  point (165.6,372.5) -> None  method=off_object  dist_px=28.6  off_object=True
+  point (401.4,372.5) -> None  method=off_object  dist_px=29.5  off_object=True
+  point (283.5,372.5) -> segment_b  method=contains  dist_px=0.0  off_object=False
+chosen component: segment_b  n=1565  width_mm=43  evidence=ok

@@ -1,0 +1,26 @@
+components found: ['lateral_protrusion', 'lateral_protrusion_1', 'rim_ring', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+[som_part_selection] label collision(s) resolved for region(s): [0, 1, 2, 3, 4, 5]
+wrote report_assets/figures/fig_stage3b_som_marks_spoon.png
+
+--- region list ---
+  0: closing width 20 mm, 164 points, 5.6% of object
+  1: closing width 5 mm, 47 points, 1.6% of object (below evidence floor)
+  2: closing width 24 mm, 449 points, 15.3% of object
+  3: closing width 27 mm, 648 points, 22.1% of object
+  4: closing width 33 mm, 638 points, 21.7% of object
+  5: closing width 34 mm, 990 points, 33.7% of object
+
+--- prompt (DRY -- no API call made) ---
+A robot is about to act on the object shown, following this instruction: "pick up the spoon"
+
+The image has 6 numbered candidate regions marked on the object, each a distinct colour-tinted patch with a number label. Measured properties of each region:
+  0: closing width 20 mm, 164 points, 5.6% of object
+  1: closing width 5 mm, 47 points, 1.6% of object (below evidence floor)
+  2: closing width 24 mm, 449 points, 15.3% of object
+  3: closing width 27 mm, 648 points, 22.1% of object
+  4: closing width 33 mm, 638 points, 21.7% of object
+  5: closing width 34 mm, 990 points, 33.7% of object
+
+Considering the instruction and each region's measured size, position and share of the object, which numbered region should the robot grasp? Respond ONLY with JSON: {"region": <int>, "reason": "<short>"}
+If none of the regions is an appropriate place to grasp for this instruction, set region to -1.

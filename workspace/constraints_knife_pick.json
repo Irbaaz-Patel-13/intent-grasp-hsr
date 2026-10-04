@@ -1,0 +1,12 @@
+{
+  "instruction": "pick up the knife",
+  "target_object": "knife",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "none",
+    "stability_priority": "high",
+    "thermal_or_hygiene": null
+  }
+}

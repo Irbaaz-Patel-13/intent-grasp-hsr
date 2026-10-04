@@ -1,0 +1,54 @@
+{
+  "figure": "NEW-A",
+  "claim": "Geometry recovers structural components that appearance grounding cannot reliably isolate; the handle fragments into two sub-threshold clusters and the evidence gate correctly refuses both rather than substituting a different part.",
+  "exact_source_files": [
+    "captures_pairs_2/cap_mug_head_near.npz",
+    "bc_mug.log",
+    "ax4_mug.log",
+    "q6_intent_mug.log",
+    "part_adaptive.py:520-534 (evidence gate)"
+  ],
+  "processing_script": "new_a_part_decomposition.py",
+  "processing_command": "som_part_selection._load_and_isolate(cap_mug_head_near.npz) -> part_adaptive.find_components() -> part_adaptive.describe_components()",
+  "displayed_values": {
+    "main_body": {
+      "n": 1390,
+      "closing_width_mm": 18,
+      "evidence": "ok"
+    },
+    "top_protrusion": {
+      "n": 147,
+      "closing_width_mm": 7,
+      "evidence": "LOW"
+    },
+    "lateral_protrusion": {
+      "n": 53,
+      "closing_width_mm": 4,
+      "evidence": "NOISE"
+    },
+    "lateral_protrusion_1": {
+      "n": 36,
+      "closing_width_mm": 3,
+      "evidence": "NOISE"
+    }
+  },
+  "gate_definition_verified_from_code": {
+    "source": "part_adaptive.py:520-524",
+    "LOW": "len(pts) < 120 or closing_width_m < 0.010",
+    "NOISE": "len(pts) < 60 or closing_width_m < 0.006",
+    "note": "top_protrusion (147pts/7mm) clears NOISE on both criteria but fails LOW on width alone (7mm < 10mm) -- LOW label is code-derived, not assigned by visual judgement."
+  },
+  "object_identity_check": {
+    "figure3_source": "Experiment_Logs/2026-08-07/grasps_out.npz (grounding_rgb) + head_capture_real.npz",
+    "figure3_target_object": "red mug (Experiment_Logs/2026-08-07/constraints.json)",
+    "new_a_source": "captures_pairs_2/cap_mug_head_near.npz",
+    "result": "Same physical red mug, same table/chair/room, confirmed by direct visual side-by-side comparison this session. Different capture pass (Figure 3's anchor trial is a wider/farther view; NEW-A uses the closer 'near' view) -- not a different object.",
+    "cross_validation": "q6_intent_mug.log's own printed line ('mug_head_near: plane 0.453, 1942 object pts...') confirms bc_mug.log/ax4_mug.log/q6_intent_mug.log all ran against this exact capture, matching NEW-A's source file."
+  },
+  "known_limitations": [
+    "RELATION_HINTS binding (part_adaptive.py:538-547) is a string match against the reasoning layer's target_part, not geometric inference.",
+    "'#1'/'#2' suffix on lateral_protrusion is DBSCAN's own cluster label order, not a semantic distinction.",
+    "evaluation_outputs/part_adaptive_mug_evaluation.json is a degenerate run (all-zero extent/eigvals) -- not used as a source."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

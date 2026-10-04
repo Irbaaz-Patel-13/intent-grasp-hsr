@@ -1,0 +1,12 @@
+{
+  "instruction": "I'd like a hot drink",
+  "target_object": "red mug",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "med",
+    "thermal_or_hygiene": "hot surface"
+  }
+}

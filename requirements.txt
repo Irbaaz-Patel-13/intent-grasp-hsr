@@ -1,0 +1,29 @@
+# Versions below are the ones the PC-side code was last run and tested with
+# (Python 3.11.9, Windows 11, CUDA 12.4). Robot-side scripts in scripts/robot/
+# run on ROS Noetic with Python 3.8 and only need numpy + the ROS packages.
+
+# Install PyTorch for your CUDA version first, e.g.
+#   pip install torch==2.4.1 torchvision==0.19.1 --index-url https://download.pytorch.org/whl/cu124
+torch==2.4.1
+torchvision==0.19.1
+
+numpy==2.4.2
+scipy==1.17.1
+open3d==0.19.0
+opencv-python==4.11.0.86
+pillow==12.1.1
+matplotlib==3.10.8
+trimesh==4.11.2
+pybullet==3.2.7
+pyyaml>=6.0
+tqdm>=4.65
+
+# GPT-4o reasoning with structured outputs
+openai==1.109.1
+pydantic==2.12.5
+
+# LangSAM (GroundingDINO + SAM 2.1). Model weights download on first use.
+lang-sam @ git+https://github.com/luca-medeiros/lang-segment-anything.git@918043ed4666eea04da88aa179eb8d27ef4b1a1d
+
+# Tests
+pytest>=8.0

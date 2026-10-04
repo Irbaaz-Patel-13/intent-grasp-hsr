@@ -1,0 +1,13 @@
+timestamp,grasp,verdict,held,z_rise_m,hand_motor,contact_pos,stop_reason,lift_commanded,lift_reached,lift_executed,close_params,force_level,cage_motor,close_z,hold_margin,g1_xy,g2_pos_err,g2_ori_deg,servo_used,note
+2026-07-25 15:56:45,16,ABORT_,,,,-0.145,contact,,,,close_params.csv,firm,0.739,0.614,0.000,0.0001,0.0001,0.02,yes,"trial 1, skip_base validation"
+2026-07-25 16:13:34,5,GRASP_OK,True,0.0961,-0.3115,-0.312,contact,0.685,0.685,yes,close_params.csv,standard,0.823,0.493,0.000,0.0004,0.0001,0.01,yes,"trial 2, lower surface, tol 6px"
+2026-07-25 16:34:26,10,ABORT_,,,,+0.741,contact,,,,close_params.csv,firm,0.742,0.486,0.000,0.0017,0.0,0.0,yes,"trial 3, recorded, autonomous"
+2026-07-25 16:53:59,16,HELD_LIFT_FAULT,True,0.0001,-0.3546,-0.355,contact,0.685,0.526,NO,close_params.csv,firm,0.748,0.492,0.000,0.0026,0.0001,0.01,yes,"trial 4, grasp 16, i12 fix, tol 20px"
+2026-07-28 17:17:07,5,GRASP_OK,True,0.1534,-0.2936,-0.294,contact,0.685,0.685,yes,close_params.csv,firm,0.736,0.485,0.000,0.001,0.0001,0.02,no,"trial 5, lift patch, hand-placed (servo out of basin: mug at FOV edge)"
+2026-07-28 17:23:04,5,GRASP_OK,True,0.1532,-0.2606,-0.261,contact,0.685,0.685,yes,close_params.csv,firm,0.736,0.485,0.000,0.0008,0.0001,0.02,no,"trial 6, repeat, odom reset between trials (incident #10), skip_base"
+2026-07-28 17:24:40,5,GRASP_OK,True,0.1532,-0.2937,-0.294,contact,0.685,0.685,yes,close_params.csv,firm,0.736,0.485,0.000,0.0004,0.0002,0.03,no,"trial 7, repeat, hand-placed"
+2026-08-01 15:24:58,4,GRASP_OK,True,0.142,-0.3274,-0.327,contact,0.685,0.685,yes,close_params.csv,firm,0.785,0.483,0.000,0.0004,0.0001,0.02,yes,"trial 9, fully autonomous: servo 46.9->12.7px + lift patch, peek capture, no hand-placing"
+2026-08-01 15:27:33,4,GRASP_OK,True,0.1418,-0.3477,-0.348,contact,0.685,0.685,yes,close_params.csv,firm,0.785,0.483,0.000,0.0002,0.0002,0.01,yes,"trial 10, autonomous repeat"
+2026-08-01 15:35:40,4,GRASP_OK,True,0.1416,-0.3561,-0.356,contact,0.685,0.685,yes,close_params.csv,firm,0.785,0.483,0.000,0.0006,0.0002,0.02,yes,"trial 11, autonomous, probe (306.6,264.6) blob 11598px - detector may be over-segmenting"
+2026-08-01 15:41:48,4,GRASP_OK,True,0.1418,-0.3521,-0.352,contact,0.685,0.685,yes,close_params.csv,firm,0.785,0.483,0.000,0.0006,0.0001,0.02,yes,"trial 12, servo residual 17.4px (~12mm), v-axis limited by base deadband"
+2026-08-03 14:25:42,2,GRASP_OK,True,0.1029,-0.3287,-0.329,contact,0.685,0.685,yes,close_params.csv,firm,0.744,0.490,0.000,0.0004,0.0002,0.02,yes,live demo

@@ -1,0 +1,45 @@
+{
+  "figure": "NEW-F",
+  "claim": "Documented failure modes concentrate in perception and execution, not reasoning; planning has zero documented failures across the trial series -- a real result, not missing data.",
+  "exact_source_files": [
+    "report_assets/FAILURE_REGISTER.csv"
+  ],
+  "processing_script": "new_f_failure_register.py (load_rows())",
+  "processing_command": "csv.DictReader(FAILURE_REGISTER.csv, comment lines stripped); layer/kind/fix_status read directly per real row",
+  "displayed_values": {
+    "total_rows": 17,
+    "by_layer": {
+      "reasoning": 2,
+      "perception": 7,
+      "execution": 8,
+      "planning": 0
+    },
+    "by_kind": {
+      "defect": 9,
+      "limitation": 6,
+      "unexplained": 2
+    },
+    "confirmed_recovery_chains": [
+      {
+        "id": "incident_10_odom_reset",
+        "layer": "execution",
+        "description": "Silent odometry reset + stale place_run.ref file drove the base toward the table between trials",
+        "fix_artefact": "P3: odom-reset guard aborting on stale/near-zero reference",
+        "recovery_trial": "6"
+      },
+      {
+        "id": "trial_4_lift_fault",
+        "layer": "execution",
+        "description": "Real logged HELD_LIFT_FAULT (grasp 16): loop kept stepping after resistance appeared at -0.302, never stopping before -0.355, over-current with no lift",
+        "fix_artefact": "earlier single-step-break threshold + hold_margin=0 option (lab_patch_0727_lift.py, 2026-07-27)",
+        "recovery_trial": "5"
+      }
+    ]
+  },
+  "known_limitations": [
+    "Selection criterion (from the CSV's own header): real, logged/sourced failures and measured limitations that halted a run, endangered hardware, produced a wrong/refused outcome, or were flagged as a citability risk in this project's own audit documents -- not every code change, and not successes.",
+    "Total row count is 17 (report_assets/FAILURE_REGISTER.csv) -- no '13' figure exists anywhere in this codebase's own generated figures; no contradiction found to resolve.",
+    "trial_1_abort and trial_3_abort are logged as 'unexplained' with fix_status=open -- not presented as fixed; no independently verified causal link exists for either."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

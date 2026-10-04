@@ -1,0 +1,8 @@
+num grasps: 11  aff_center_3d: [0.507 0.065 0.459]
+
+poses shape: (11, 4, 4)
+quality_score : [0.162 0.155 0.172 0.168 0.161 0.16  0.164 0.157 0.152 0.156 0.151]
+dist_to_aff   : [0.11  0.107 0.199 0.198 0.196 0.195 0.2   0.198 0.193 0.199 0.195]   <- COMPUTED, must be finite
+
+saved -> D:\Afford-Grasp\grasps_plain.npz
+  nearest grasp to affordance: #1 at 0.107 m

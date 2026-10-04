@@ -1,0 +1,40 @@
+{
+  "figure": "NEW-B",
+  "claim": "Intent-only object identification is stable across repeated reasoning passes; the real failure rate is 4/65, computed from raw per-pass rows, not assumed.",
+  "exact_source_files": [
+    "vlm_stability.csv"
+  ],
+  "processing_script": "new_b_identification_grid.py (load_grid())",
+  "processing_command": "csv.DictReader(vlm_stability.csv) grouped by (scene, instruction) in first-seen row order, correct/incorrect per pass_no read directly, not re-derived",
+  "displayed_values": {
+    "total_cells": 65,
+    "total_correct": 61,
+    "total_incorrect": 4,
+    "correct_pct": 93.8,
+    "n_scene_instruction_rows": 13,
+    "stable_rows_5_of_5": 11,
+    "failure_rows": [
+      {
+        "scene": "cluster_mug_cokecan_pot",
+        "instruction": "I'd like a hot drink",
+        "pass_indices_failed": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "scene": "cluster_mug_remote_pot",
+        "instruction": "I'd like a hot drink",
+        "pass_indices_failed": [
+          2
+        ]
+      }
+    ]
+  },
+  "known_limitations": [
+    "Right-hand strip in the report variant (16/18 keyword-baseline divergence) is a real but SEPARATE dataset (experiments/vlm_grid/vlm_grid_results.md) -- not a per-row breakdown of these 13 cells. No keyword-baseline comparison exists for these exact cells.",
+    "Rows are source (first-appearance) order, not sorted -- failure clustering is as-occurred."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

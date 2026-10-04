@@ -1,0 +1,26 @@
+grasp_id,part_width_m,cage_gap_m,cage_motor_rad,close_z,plane_z,obj_top_z,force_level,effort,hold_margin_rad,lift_m,requires_controlled_tilt,retreat,ok,note
+0,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+1,0.1217,0.125,1.159,0.4426,0.4488,0.4676,standard,0.3,0.008,0.1,0,none,0,WIDTH GATE: exceeds aperture
+2,0.1403,0.125,1.159,0.4426,0.4488,0.4676,standard,0.3,0.008,0.1,0,none,0,WIDTH GATE: exceeds aperture
+3,,,,,0.4488,0.4676,,,,,0,,0,too few pts (32)
+4,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+5,,,,,0.4488,0.4676,,,,,0,,0,too few pts (57)
+6,,,,,0.4488,0.4676,,,,,0,,0,too few pts (53)
+7,,,,,0.4488,0.4676,,,,,0,,0,too few pts (53)
+8,,,,,0.4488,0.4676,,,,,0,,0,too few pts (2)
+9,0.1979,0.125,1.159,0.4426,0.4488,0.4676,standard,0.3,0.008,0.1,0,none,0,WIDTH ARTIFACT: 198mm vs scene median 146mm WIDTH GATE: exceeds aperture
+10,,,,,0.4488,0.4676,,,,,0,,0,too few pts (14)
+11,,,,,0.4488,0.4676,,,,,0,,0,too few pts (39)
+12,,,,,0.4488,0.4676,,,,,0,,0,too few pts (25)
+13,,,,,0.4488,0.4676,,,,,0,,0,too few pts (16)
+14,0.1524,0.125,1.159,0.4426,0.4488,0.4676,standard,0.3,0.008,0.1,0,none,0,WIDTH GATE: exceeds aperture
+15,,,,,0.4488,0.4676,,,,,0,,0,too few pts (11)
+16,,,,,0.4488,0.4676,,,,,0,,0,too few pts (44)
+17,,,,,0.4488,0.4676,,,,,0,,0,too few pts (3)
+18,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+19,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+20,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+21,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+22,,,,,0.4488,0.4676,,,,,0,,0,too few pts (17)
+23,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)
+24,,,,,0.4488,0.4676,,,,,0,,0,too few pts (0)

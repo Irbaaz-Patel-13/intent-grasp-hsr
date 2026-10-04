@@ -1,0 +1,210 @@
+[
+  {
+    "object": "mug",
+    "instruction": "Hand me the mug",
+    "step1": {
+      "task_goal": "The user wants to drink or hold a beverage.",
+      "functional_requirements": [
+        "The object must be able to hold liquid.",
+        "The object must have a handle for easy grasping."
+      ],
+      "required_object_type": "mug",
+      "required_properties": [
+        "cylindrical shape",
+        "handle",
+        "open top",
+        "liquid-holding capacity"
+      ]
+    },
+    "step3": {
+      "target_object": "mug",
+      "target_part": "body",
+      "constraints": {
+        "keep_clear": [
+          "handle"
+        ],
+        "keep_clear_reasons": [
+          "The handle must be unobstructed for the receiver to grasp it easily."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": "The mug may be hot if it contains a hot beverage."
+      },
+      "rationale": "For a handover task, the handle should be kept clear so the receiver can easily grasp it. The body of the mug is a stable part to grasp, and it allows the handle to be presented towards the receiver. The mug may be hot, so the robot should be cautious when grasping the body.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bottle",
+    "instruction": "Hand me the bottle",
+    "step1": {
+      "task_goal": "To provide the user with a bottle.",
+      "functional_requirements": [
+        "The object must be graspable by a human hand.",
+        "The object must be portable.",
+        "The object must be identifiable as a bottle."
+      ],
+      "required_object_type": "bottle",
+      "required_properties": [
+        "cylindrical shape",
+        "cap or opening",
+        "suitable size for hand grasping"
+      ]
+    },
+    "step3": {
+      "target_object": "bottle",
+      "target_part": "body",
+      "constraints": {
+        "keep_clear": [
+          "neck"
+        ],
+        "keep_clear_reasons": [
+          "The neck must be clear for the human to grasp the bottle easily."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a bottle, the robot should grasp the body to leave the neck clear for the human to easily take hold of it. This ensures the bottle is presented in a way that is natural for the receiver to grasp. The stability priority is medium as the bottle needs to be securely held but not against significant forces.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "hammer",
+    "instruction": "Hand me the hammer",
+    "step1": {
+      "task_goal": "To drive a nail or similar fastener into a surface or to remove a nail from a surface.",
+      "functional_requirements": [
+        "The object must be able to deliver force to a small area.",
+        "The object must have a handle for gripping.",
+        "The object must have a head suitable for striking or prying."
+      ],
+      "required_object_type": "hammer",
+      "required_properties": [
+        "heavy head",
+        "sturdy handle",
+        "flat striking surface",
+        "claw for nail removal"
+      ]
+    },
+    "step3": {
+      "target_object": "hammer",
+      "target_part": "head",
+      "constraints": {
+        "keep_clear": [
+          "handle"
+        ],
+        "keep_clear_reasons": [
+          "The handle must be unobstructed for the receiver to grasp it."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "high",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For a handover task, the hammer's handle must be clear for the receiver to grasp it naturally. The robot should grasp the head to ensure the handle is presented towards the receiver. This also controls the potentially hazardous head, ensuring it is not directed towards the person.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "knife",
+    "instruction": "Hand me the knife",
+    "step1": {
+      "task_goal": "To cut or slice an item",
+      "functional_requirements": [
+        "The object must have a sharp edge",
+        "The object must be easy to handle and control"
+      ],
+      "required_object_type": "knife",
+      "required_properties": [
+        "sharp",
+        "ergonomic handle"
+      ]
+    },
+    "step3": {
+      "target_object": "knife",
+      "target_part": "blade spine",
+      "constraints": {
+        "keep_clear": [
+          "handle"
+        ],
+        "keep_clear_reasons": [
+          "The handle must be unobstructed for the receiver to grasp and control the knife safely."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "high",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a knife, the robot should grasp the blade spine to ensure the handle is unobstructed and safely presented to the receiver. This allows the receiver to easily and safely grasp the handle to use the knife for cutting or slicing.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bowl",
+    "instruction": "Hand me the bowl",
+    "step1": {
+      "task_goal": "To receive a bowl for holding or serving contents.",
+      "functional_requirements": [
+        "The object must be able to hold contents.",
+        "The object must be easy to grasp and pass to the user."
+      ],
+      "required_object_type": "bowl",
+      "required_properties": [
+        "concave shape",
+        "sufficient depth",
+        "smooth rim for safe handling"
+      ]
+    },
+    "step3": {
+      "target_object": "bowl",
+      "target_part": "rim",
+      "constraints": {
+        "keep_clear": [
+          "interior"
+        ],
+        "keep_clear_reasons": [
+          "The interior must remain unobstructed to allow the receiver to use the bowl for holding or serving contents."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a bowl, grasping the rim allows the receiver to easily take hold of the bowl by its sides or base. The interior must remain clear to ensure it can hold contents immediately upon receipt.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "pan",
+    "instruction": "Hand me the pan",
+    "step1": {
+      "task_goal": "The user wants to cook or heat something using the pan.",
+      "functional_requirements": [
+        "The pan must be clean.",
+        "The pan should be of appropriate size for the cooking task.",
+        "The pan should be heat-resistant."
+      ],
+      "required_object_type": "pan",
+      "required_properties": [
+        "clean",
+        "appropriate size",
+        "heat-resistant"
+      ]
+    },
+    "step3": {
+      "target_object": "pan",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [
+          "handle"
+        ],
+        "keep_clear_reasons": [
+          "The handle must be unobstructed for the receiver to grasp it safely."
+        ],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": "The pan may be hot, so the handle is the safest part to grasp."
+      },
+      "rationale": "For handing over a pan, the handle is the safest and most natural part for the receiver to grasp. The robot should hold the pan by the body, leaving the handle clear for the person. This ensures safe handling, especially if the pan is hot.",
+      "confidence": 0.95
+    }
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "cap": "captures_pairs_2/cap_knife_head_near.npz",
+    "instruction": "pick up the knife",
+    "part_str": "handle",
+    "chosen": "lateral_protrusion",
+    "score": 7.108,
+    "npts": 216,
+    "closing_width_mm": 24,
+    "evidence": "ok",
+    "note": "bound 'handle' -> lateral_protrusion (lower of the object, 24 mm wide, 216 pts, evidence ok, score 7.1)"
+  },
+  {
+    "cap": "captures_pairs_2/cap_knife_head_near.npz",
+    "instruction": "hand me the knife",
+    "part_str": "handle",
+    "chosen": "lateral_protrusion",
+    "score": 7.108,
+    "npts": 216,
+    "closing_width_mm": 24,
+    "evidence": "ok",
+    "note": "bound 'handle' -> lateral_protrusion (lower of the object, 24 mm wide, 216 pts, evidence ok, score 7.1)"
+  },
+  {
+    "cap": "captures_pairs_2/cap_knife_head_near.npz",
+    "instruction": "put the knife in the drawer",
+    "part_str": "handle",
+    "chosen": "lateral_protrusion",
+    "score": 7.108,
+    "npts": 216,
+    "closing_width_mm": 24,
+    "evidence": "ok",
+    "note": "bound 'handle' -> lateral_protrusion (lower of the object, 24 mm wide, 216 pts, evidence ok, score 7.1)"
+  },
+  {
+    "cap": "captures_pairs_2/cap_mug_head_near.npz",
+    "instruction": "pour me a coffee",
+    "part_str": "handle",
+    "chosen": null,
+    "score": 1.0265,
+    "npts": 0,
+    "closing_width_mm": null,
+    "evidence": null,
+    "note": "the component matching 'handle' is lateral_protrusion (NOISE, 4 mm, 53 pts) -- not usable, and substituting a different part would change the task"
+  },
+  {
+    "cap": "captures_pairs_2/cap_mug_head_near.npz",
+    "instruction": "move this out of the way",
+    "part_str": "handle",
+    "chosen": null,
+    "score": 1.0265,
+    "npts": 0,
+    "closing_width_mm": null,
+    "evidence": null,
+    "note": "the component matching 'handle' is lateral_protrusion (NOISE, 4 mm, 53 pts) -- not usable, and substituting a different part would change the task"
+  },
+  {
+    "cap": "captures_pairs_2/cap_mug_head_near.npz",
+    "instruction": "hand me the mug",
+    "part_str": "handle",
+    "chosen": null,
+    "score": 1.0265,
+    "npts": 0,
+    "closing_width_mm": null,
+    "evidence": null,
+    "note": "the component matching 'handle' is lateral_protrusion (NOISE, 4 mm, 53 pts) -- not usable, and substituting a different part would change the task"
+  },
+  {
+    "cap": "captures_pairs_2/cap_remote_head_near.npz",
+    "instruction": "hand me the remote",
+    "part_str": "middle section",
+    "chosen": "segment_b",
+    "score": 7.7825,
+    "npts": 1565,
+    "closing_width_mm": 43,
+    "evidence": "ok",
+    "note": "bound 'middle section' -> segment_b (upper of the object, 43 mm wide, 1565 pts, evidence ok, score 7.8)"
+  },
+  {
+    "cap": "captures_pairs_2/cap_remote_head_near.npz",
+    "instruction": "put the remote on the shelf",
+    "part_str": "sides",
+    "chosen": "segment_b",
+    "score": 7.7825,
+    "npts": 1565,
+    "closing_width_mm": 43,
+    "evidence": "ok",
+    "note": "bound 'sides' -> segment_b (upper of the object, 43 mm wide, 1565 pts, evidence ok, score 7.8)"
+  },
+  {
+    "cap": "captures_pairs_2/cap_remote_head_near.npz",
+    "instruction": "turn the television on",
+    "part_str": "sides",
+    "chosen": "segment_b",
+    "score": 7.7825,
+    "npts": 1565,
+    "closing_width_mm": 43,
+    "evidence": "ok",
+    "note": "bound 'sides' -> segment_b (upper of the object, 43 mm wide, 1565 pts, evidence ok, score 7.8)"
+  }
+]

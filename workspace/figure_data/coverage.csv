@@ -1,0 +1,7 @@
+object,instruction,part_query,part_mask_px,object_mask_px,coverage,run_id,date,source
+knife,pick up the knife,knife handle.,6682,,0.97,knife_pick2,2026-08-02,"run_knife_pick2.log:38,47,52,62,63"
+knife,hand me the knife,knife handle.,6682,,0.97,knife_hand,2026-08-02,"run_knife_hand.log:38,47,52,62,63"
+knife,put the knife in the drawer,knife handle.,6682,,0.97,knife_put,2026-08-02,"run_knife_put.log:38,47,52,62,63"
+remote control,hand me the remote,remote control middle section.,5115,,0.88,remote_hand,2026-08-02,"run_remote_hand.log:38,47,52,62,63"
+remote control,turn the television on,remote control sides.,5017,,0.86,remote_power,2026-08-02,"run_remote_power.log:38,47,52,62,63"
+remote control,put the remote on the shelf,remote control sides.,5017,,0.86,remote_put,2026-08-02,"run_remote_put.log:38,47,52,62,63"

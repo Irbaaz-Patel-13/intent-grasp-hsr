@@ -1,0 +1,35 @@
+{
+  "figure": "slide13_perception.png",
+  "slide_number": 13,
+  "figure_purpose": "Unifies NEW-C (mask-coverage collapse) and NEW-D (method disagreement) under one argument: object identification is reliable, part grounding is not.",
+  "claim": "Object identification works (references Slide 12's 61/65); part grounding does not converge on one physical region across 3 independent methods.",
+  "exact_source_files": [
+    "new_c_langsam_coverage.py (RUNS list, real, unchanged)",
+    "report_assets/PART_NAMING_ABLATION.csv (via new_d_method_disagreement.load_grid())",
+    "report_assets/figures_live/langsam_overlay_knife_pick.png (real live LangSAM run)",
+    "report_assets/figures/fig_stage3b_som_knife_pick.png (real, pre-existing)"
+  ],
+  "processing_script": "new_slide13_perception.py",
+  "processing_command": "new_c_langsam_coverage.RUNS[0][2] (real, unchanged) for the 97% headline; new_d_method_disagreement.load_grid() re-read live for the knife/'pick up the knife' row; agreement computed via collections.Counter on the real per-method answers (max group size, not distinct-answer count)",
+  "displayed_values": {
+    "new_c_headline_pct": 97,
+    "new_c_range_pct": "86-97 (6 real live runs, 2 objects -- see new_c_langsam_coverage.RUNS)",
+    "new_d_row": {
+      "object": "knife",
+      "instruction": "pick up the knife",
+      "per_method": {
+        "A_heuristic": "lateral_protrusion",
+        "B_som": "segment_c",
+        "C_pointing": "(off-object)"
+      },
+      "agree_of_3": 0
+    }
+  },
+  "value_type": "measured (both C_PCT and the agreement count are re-derived live from real source files at manifest-build time, not typed from memory)",
+  "known_limitations": [
+    "IMPORTANT: an earlier draft of this figure displayed the disagreement result as a distinct-answer count (e.g. '3/3' or '1/3'), which reads ambiguously/backwards as a headline. Fixed to display max-group-agreement, so 0 agree when all 3 methods differ.",
+    "'Object identification reliable' cites Slide 12 (NEW-B, 61/65) -- not re-derived on this slide.",
+    "NEW-C's 86-97% range covers 6 real runs (knife x3, remote x3); only the knife/pick 97% value (and its live-rerun ~98% illustrative image) is shown as the headline on this slide."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

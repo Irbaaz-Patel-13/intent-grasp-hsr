@@ -1,0 +1,12 @@
+{
+  "instruction": "pick up the pot",
+  "target_object": "pot",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+  }
+}

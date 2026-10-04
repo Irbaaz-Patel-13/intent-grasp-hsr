@@ -1,0 +1,35 @@
+grasps: 25   keys: ['poses', 'scores', 'dist_to_aff', 'aff_center_3d', 'quality_score', 'affordance_score', 'combined_score']
+cloud key 'points': 244396 pts
+gap map: 9 points
+[constraints] from constraints.json
+plane_z=0.449  obj_top=0.476  obj_pts=3756
+scene median part_width = 0.0952 m  (artifact guard: reject >30% deviation)
+[policy] stability=low, motion=handover -> force=gentle(effort 0.15, hold +0.000 rad), depth_frac=0.50, clearance=0.020 m, lift=0.10 m
+g0   w=0.1211  cage=0.125   motor=1.159  close_z=0.4506  force=gentle   ok=0 WIDTH GATE: exceeds aperture
+g1   w=0.0952  cage=0.1152  motor=0.991  close_z=0.4506  force=gentle   ok=1 
+g2   w=0.0974  cage=0.1174  motor=1.025  close_z=0.4506  force=gentle   ok=1 
+g3   w=0.1152  cage=0.125   motor=1.159  close_z=0.4506  force=gentle   ok=0 WIDTH GATE: exceeds aperture
+g4   w=0.1055  cage=0.125   motor=1.159  close_z=0.4506  force=gentle   ok=0 WIDTH GATE: exceeds aperture
+g5   w=0.1045  cage=0.1245  motor=1.149  close_z=0.4506  force=gentle   ok=1 
+g6   w=0.1065  cage=0.125   motor=1.159  close_z=0.4506  force=gentle   ok=0 WIDTH GATE: exceeds aperture
+g7   w=0.0991  cage=0.1191  motor=1.055  close_z=0.4506  force=gentle   ok=1 
+g8   w=0.1071  cage=0.125   motor=1.159  close_z=0.4506  force=gentle   ok=0 WIDTH GATE: exceeds aperture
+g9   w=0.1045  cage=0.1245  motor=1.15   close_z=0.4506  force=gentle   ok=1 
+g10  w=0.0932  cage=0.1132  motor=0.967  close_z=0.4506  force=gentle   ok=1 
+g11  w=0.1034  cage=0.1234  motor=1.131  close_z=0.4506  force=gentle   ok=1 
+g12  w=0.098   cage=0.118   motor=1.036  close_z=0.4506  force=gentle   ok=1 
+g13  w=0.1001  cage=0.1201  motor=1.073  close_z=0.4506  force=gentle   ok=1 
+g14  w=0.0382  cage=0.0582  motor=0.038  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 38mm vs scene median 95mm
+g15  w=0.0703  cage=0.0903  motor=0.65   close_z=0.4506  force=gentle   ok=1 
+g16  w=0.0759  cage=0.0959  motor=0.741  close_z=0.4506  force=gentle   ok=1 
+g17  w=0.072   cage=0.092   motor=0.678  close_z=0.4506  force=gentle   ok=1 
+g18  w=0.0531  cage=0.0731  motor=0.297  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 53mm vs scene median 95mm
+g19  w=0.049   cage=0.069   motor=0.217  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 49mm vs scene median 95mm
+g20  w=0.0457  cage=0.0657  motor=0.161  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 46mm vs scene median 95mm
+g21  w=0.0509  cage=0.0709  motor=0.254  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 51mm vs scene median 95mm
+g22  w=0.0439  cage=0.0639  motor=0.131  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 44mm vs scene median 95mm
+g23  w=0.044   cage=0.064   motor=0.132  close_z=0.4506  force=gentle   ok=0 WIDTH ARTIFACT: 44mm vs scene median 95mm
+g24  w=0.067   cage=0.087   motor=0.593  close_z=0.4506  force=gentle   ok=1 
+
+wrote close_params.csv  (13/25 ok)   constraints source: constraints.json
+scp close_params.csv to the workstation alongside place_run.csv

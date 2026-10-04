@@ -1,0 +1,141 @@
+{
+  "generated": "2026-08-09T16:34:01",
+  "figures": {
+    "NEW-A": {
+      "claim": "Geometry recovers structural components that appearance grounding cannot reliably isolate; the handle fragments into two sub-threshold clusters and the evidence gate correctly refuses both rather than substituting a different part.",
+      "exact_source_files": [
+        "captures_pairs_2/cap_mug_head_near.npz",
+        "bc_mug.log",
+        "ax4_mug.log",
+        "q6_intent_mug.log",
+        "part_adaptive.py:520-534 (evidence gate)"
+      ],
+      "processing_script": "new_a_part_decomposition.py"
+    },
+    "NEW-B": {
+      "claim": "Intent-only object identification is stable across repeated reasoning passes; the real failure rate is 4/65, computed from raw per-pass rows, not assumed.",
+      "exact_source_files": [
+        "vlm_stability.csv"
+      ],
+      "processing_script": "new_b_identification_grid.py (load_grid())"
+    },
+    "NEW-D": {
+      "claim": "Three independent part-naming methods do not consistently identify the same physical part; agreement is computed from real per-row data, not assumed: 4/9 rows are full 3-way disagreement (string-exact on chosen_component).",
+      "exact_source_files": [
+        "report_assets/PART_NAMING_ABLATION.csv",
+        "report_assets/figures/fig_stage3b_som_knife_pick.png",
+        "report_assets/figures/fig_stage3c_point_knife_pick.png",
+        "report_assets/figures/fig_stage0_capture_knife_near.png"
+      ],
+      "processing_script": "new_d_method_disagreement.py (load_grid(), verify_som_hash_groups())"
+    },
+    "NEW-E": {
+      "claim": "Clutter changes the SAME real measurement pipeline's returned width for the SAME physical object; the pot and the remote move in opposite directions, so this is not a general clutter-degrades-measurement claim.",
+      "exact_source_files": [
+        "batch_scene_analysis.csv"
+      ],
+      "processing_script": "new_e_isolated_vs_cluttered.py (load_rows())"
+    },
+    "NEW-F": {
+      "claim": "Documented failure modes concentrate in perception and execution, not reasoning; planning has zero documented failures across the trial series -- a real result, not missing data.",
+      "exact_source_files": [
+        "report_assets/FAILURE_REGISTER.csv"
+      ],
+      "processing_script": "new_f_failure_register.py (load_rows())"
+    },
+    "NEW-H": {
+      "claim": "Same object, two real instructions: reasoning commits to a confident target_part string in both cases; only perception's real geometric measurement determines whether execution is even attempted.",
+      "exact_source_files": [
+        "captures_pairs_2/cap_mug_head_near.npz (reused from NEW-A, same physical mug)",
+        "q6_intent_mug.log (left column: reasoning+perception)",
+        "Experiment_Logs/2026-08-07/constraints.json (right column: reasoning, real anchor trial)",
+        "part_adaptive.py:520-524 (evidence gate)",
+        "trials.csv trial 9 (left column kinematics, real z_rise_m=0.1420)"
+      ],
+      "processing_script": "new_h_three_layer_limit.py"
+    },
+    "NEW-HW": {
+      "claim": "Real logged hardware trial series ran trials 1-7 and 9-12; trial 8 has no record (a real gap, preserved, not renumbered or interpolated). Trials 9-12 (fully autonomous) are tightly repeatable: z-rise spread computed directly from the file.",
+      "exact_source_files": [
+        "trials.csv"
+      ],
+      "processing_script": "new_hw_trial_history.py (load_trials())"
+    },
+    "NEW-I": {
+      "claim": "The evidence gate tests sufficiency (enough points, wide enough), not physical correctness. A real, documented rename bug (PERCEPTION_EVIDENCE.md Part ANr3) orphaned a RELATION_HINTS key, silently misrouting two real queries to the wrong component -- and BOTH the wrong and the corrected answer clear the same evidence gate.",
+      "exact_source_files": [
+        "report_assets/PERCEPTION_EVIDENCE.md (Part ANr3/AW1/AW2)",
+        "part_adaptive.py.before_orphan_fix (real backup file, broken RELATION_HINTS dict)",
+        "part_adaptive.py (current, fixed RELATION_HINTS dict)",
+        "captures_pairs_2/cap_remote_head_near.npz"
+      ],
+      "processing_script": "new_i_binding_fragility.py (run_both_states())"
+    }
+  },
+  "slide_10_17_composite_figures": {
+    "Slide11_methodology": {
+      "claim": "Process documentation only -- no quantitative result is asserted by this figure.",
+      "exact_source_files": [
+        "captures_pairs_2",
+        "vlm_stability.csv",
+        "report_assets/PART_NAMING_ABLATION.csv",
+        "batch_scene_analysis.csv",
+        "part_adaptive.py",
+        "grasp_policy.py",
+        "Backups/2026-08-07/Afford-Grasp/execute_place_grasp_raw.py",
+        "trials.csv",
+        "report_assets/FAILURE_REGISTER.csv"
+      ],
+      "processing_script": "new_methodology.py (render(), _real_sources_exist())",
+      "slide_number": 11
+    },
+    "Slide13_perception": {
+      "claim": "Object identification works (references Slide 12's 61/65); part grounding does not converge on one physical region across 3 independent methods.",
+      "exact_source_files": [
+        "new_c_langsam_coverage.py (RUNS list, real, unchanged)",
+        "report_assets/PART_NAMING_ABLATION.csv (via new_d_method_disagreement.load_grid())",
+        "report_assets/figures_live/langsam_overlay_knife_pick.png (real live LangSAM run)",
+        "report_assets/figures/fig_stage3b_som_knife_pick.png (real, pre-existing)"
+      ],
+      "processing_script": "new_slide13_perception.py",
+      "slide_number": 13
+    },
+    "Slide14_hardware": {
+      "claim": "2 of 8 real documented execution defects have a confirmed recovery trial (odom-reset guard -> trial 6 GRASP_OK; lift-fault threshold fix -> trial 5 GRASP_OK). The other 6 execution rows are patched-only, diagnosed-only, or open -- not shown as chains here.",
+      "exact_source_files": [
+        "report_assets/FAILURE_REGISTER.csv",
+        "trials.csv"
+      ],
+      "processing_script": "new_slide14_hardware.py (load_chain_rows(), new_hw_trial_history.load_trials())",
+      "slide_number": 14
+    },
+    "Slide15_clutter": {
+      "claim": "pot: 147mm isolated (REFUSE, over 125mm aperture) -> 46mm cluttered (PASS). Real fused cloud: 237,991 real points, 8 real objects found live.",
+      "exact_source_files": [
+        "batch_scene_analysis.csv",
+        "captures_0723/cap_pot_with_handle_and_lid.npz",
+        "captures_0723/cap_cluster_mug_cokecan_pot.npz",
+        "batch_out/cluster_mug_cokecan_pot_fused_cloud.npz"
+      ],
+      "processing_script": "new_slide15_clutter.py",
+      "slide_number": 15
+    }
+  },
+  "figures_not_modified_this_pass": {
+    "NEW-C": "report_assets/PART_NAMING_ABLATION.csv-independent; source: [VisualGrounder] WARNING lines in run_knife_*.log/run_remote_*.log, 6 real live runs. Audit found no inaccuracy -- kept as-is per instruction not to redesign passing figures.",
+    "NEW-G": "Source: batch_out/cluster_mug_cokecan_pot_fused_cloud.npz (real, 237,991 pts) + captures_0723/cap_cluster_mug_cokecan_pot.npz (real RGB, same scene). Audit found no inaccuracy -- kept as-is."
+  },
+  "object_identity_verification": {
+    "figure3_source": "Experiment_Logs/2026-08-07/grasps_out.npz (grounding_rgb) + head_capture_real.npz",
+    "figure3_target_object": "red mug (Experiment_Logs/2026-08-07/constraints.json)",
+    "new_a_source": "captures_pairs_2/cap_mug_head_near.npz",
+    "result": "Same physical red mug, same table/chair/room, confirmed by direct visual side-by-side comparison this session. Different capture pass (Figure 3's anchor trial is a wider/farther view; NEW-A uses the closer 'near' view) -- not a different object.",
+    "cross_validation": "q6_intent_mug.log's own printed line ('mug_head_near: plane 0.453, 1942 object pts...') confirms bc_mug.log/ax4_mug.log/q6_intent_mug.log all ran against this exact capture, matching NEW-A's source file."
+  },
+  "gate_verification": {
+    "source": "part_adaptive.py:520-524",
+    "LOW": "len(pts) < 120 or closing_width_m < 0.010",
+    "NOISE": "len(pts) < 60 or closing_width_m < 0.006",
+    "note": "top_protrusion (147pts/7mm) clears NOISE on both criteria but fails LOW on width alone (7mm < 10mm) -- LOW label is code-derived, not assigned by visual judgement."
+  }
+}

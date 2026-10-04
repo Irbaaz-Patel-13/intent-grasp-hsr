@@ -1,0 +1,19 @@
+object,instruction_type,instruction_text,target_part,keep_clear,post_grasp_motion,stability_priority,thermal_flag,source
+mug,relocate,Move the mug to the other side of the table,handle,,translate,med,,vlm_grid_raw.json:L21-L33
+mug,use,Pour the coffee out of the mug,handle,rim,tilt_pour,med,hot surface,vlm_grid_raw.json:L53-L69
+mug,handover,Hand me the mug,handle,,handover,med,,vlm_grid_raw.json:L89-L101
+bottle,relocate,Move the bottle to the other side of the table,body,,translate,med,,vlm_grid_raw.json:L121-L133
+bottle,use,Pour some water from the bottle,neck,opening,tilt_pour,med,,vlm_grid_raw.json:L151-L167
+bottle,handover,Hand me the bottle,neck,,handover,med,,vlm_grid_raw.json:L187-L199
+hammer,relocate,Move the hammer to the other side of the table,handle,,translate,med,,vlm_grid_raw.json:L219-L231
+hammer,use,Hammer the nail into the board,handle,head,translate,high,,vlm_grid_raw.json:L251-L267
+hammer,handover,Hand me the hammer,handle,,handover,high,,vlm_grid_raw.json:L287-L299
+knife,relocate,Move the knife to the other side of the table,handle,,translate,high,null,vlm_grid_raw.json:L318-L330
+knife,use,Cut the apple with the knife,handle,blade,translate,high,,vlm_grid_raw.json:L348-L364
+knife,handover,Hand me the knife,handle,,handover,med,,vlm_grid_raw.json:L382-L394
+bowl,relocate,Move the bowl to the other side of the table,rim,,translate,med,,vlm_grid_raw.json:L415-L427
+bowl,use,Pour the cereal out of the bowl,rim,opening,tilt_pour,med,,vlm_grid_raw.json:L446-L462
+bowl,handover,Hand me the bowl,rim,,handover,med,,vlm_grid_raw.json:L481-L493
+pan,relocate,Move the pan to the other side of the table,handle,,translate,high,pan may be hot,vlm_grid_raw.json:L512-L524
+pan,use,Fry an egg in the pan,handle,,none,high,hot surface,vlm_grid_raw.json:L544-L556
+pan,handover,Hand me the pan,handle,,handover,low,The pan must be clean.,vlm_grid_raw.json:L576-L588

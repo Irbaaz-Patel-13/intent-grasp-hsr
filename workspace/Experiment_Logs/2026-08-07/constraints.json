@@ -1,0 +1,16 @@
+{
+  "instruction": "I'd like a hot drink",
+  "target_object": "red mug",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [
+      "rim"
+    ],
+    "keep_clear_reasons": [
+      "Covering this would block the liquid's exit path during pouring."
+    ],
+    "post_grasp_motion": "tilt_pour",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+  }
+}

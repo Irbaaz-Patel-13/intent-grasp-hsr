@@ -1,0 +1,12 @@
+{
+  "instruction": "hand me the remote",
+  "target_object": "remote control",
+  "target_part": "middle section",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "handover",
+    "stability_priority": "low",
+    "thermal_or_hygiene": null
+  }
+}

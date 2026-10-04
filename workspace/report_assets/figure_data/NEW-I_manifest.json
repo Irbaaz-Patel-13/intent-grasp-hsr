@@ -1,0 +1,51 @@
+{
+  "figure": "NEW-I",
+  "claim": "The evidence gate tests sufficiency (enough points, wide enough), not physical correctness. A real, documented rename bug (PERCEPTION_EVIDENCE.md Part ANr3) orphaned a RELATION_HINTS key, silently misrouting two real queries to the wrong component -- and BOTH the wrong and the corrected answer clear the same evidence gate.",
+  "exact_source_files": [
+    "report_assets/PERCEPTION_EVIDENCE.md (Part ANr3/AW1/AW2)",
+    "part_adaptive.py.before_orphan_fix (real backup file, broken RELATION_HINTS dict)",
+    "part_adaptive.py (current, fixed RELATION_HINTS dict)",
+    "captures_pairs_2/cap_remote_head_near.npz"
+  ],
+  "processing_script": "new_i_binding_fragility.py (run_both_states())",
+  "processing_command": "som_part_selection._load_and_isolate() -> live part_adaptive.bind_part() called twice per query, once with the real broken RELATION_HINTS dict swapped in, once with the real fixed dict -- both live calls this session, reproducing PERCEPTION_EVIDENCE.md's documented numbers exactly",
+  "displayed_values": {
+    "sides": {
+      "pre_fix": {
+        "name": "main_body",
+        "n": 286,
+        "score": 7.143,
+        "evidence": "ok",
+        "width_mm": 38
+      },
+      "post_fix": {
+        "name": "segment_b",
+        "n": 1565,
+        "score": 7.7825,
+        "evidence": "ok",
+        "width_mm": 43
+      }
+    },
+    "middle section": {
+      "pre_fix": {
+        "name": "main_body",
+        "n": 286,
+        "score": 5.143,
+        "evidence": "ok",
+        "width_mm": 38
+      },
+      "post_fix": {
+        "name": "segment_b",
+        "n": 1565,
+        "score": 7.7825,
+        "evidence": "ok",
+        "width_mm": 43
+      }
+    }
+  },
+  "known_limitations": [
+    "main_body's own RELATION_HINTS entry independently includes 'sides'/'middle'/'centre' hint words (untouched by this bug) -- coincidental overlap, part of why the tie-break landed on main_body specifically, not part of the orphaned-key defect itself.",
+    "This figure complements, not duplicates, NEW-A/NEW-H: those show the gate correctly refusing insufficient evidence; this shows the gate has no mechanism for a wrong-but-sufficient answer."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

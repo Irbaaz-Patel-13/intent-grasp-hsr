@@ -1,0 +1,45 @@
+{
+  "figure": "NEW-E",
+  "claim": "Clutter changes the SAME real measurement pipeline's returned width for the SAME physical object; the pot and the remote move in opposite directions, so this is not a general clutter-degrades-measurement claim.",
+  "exact_source_files": [
+    "batch_scene_analysis.csv"
+  ],
+  "processing_script": "new_e_isolated_vs_cluttered.py (load_rows())",
+  "processing_command": "csv.DictReader(batch_scene_analysis.csv) keyed by scene name; minor_mm/over_aperture read directly per real row",
+  "displayed_values": {
+    "pairs": [
+      {
+        "object": "pot",
+        "isolated_scene": "pot_with_handle_and_lid",
+        "isolated_minor_mm": 147.0,
+        "isolated_over_aperture": true,
+        "cluttered_scene": "cluster_mug_cokecan_pot",
+        "cluttered_minor_mm": 46.0,
+        "cluttered_over_aperture": false,
+        "delta_mm": -101.0
+      },
+      {
+        "object": "TV remote control",
+        "isolated_scene": "TV_remote",
+        "isolated_minor_mm": 13.0,
+        "isolated_over_aperture": false,
+        "cluttered_scene": "cluster_mug_remote_pot",
+        "cluttered_minor_mm": 73.0,
+        "cluttered_over_aperture": false,
+        "delta_mm": 60.0
+      },
+      {
+        "object": "spoon",
+        "isolated_scene": "metal_spoon",
+        "isolated_minor_mm": 9.0,
+        "isolated_over_aperture": false,
+        "cluttered_scene": null
+      }
+    ]
+  },
+  "known_limitations": [
+    "Only 5 real scenes exist in this dataset -- not generalised beyond them.",
+    "metal_spoon has no cluttered-capture row -- rendered 'not captured', not inferred/interpolated."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

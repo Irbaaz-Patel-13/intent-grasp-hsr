@@ -1,0 +1,12 @@
+components found: ['lateral_protrusion', 'main_body', 'rim_ring', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+wrote crop (as SENT, upscaled) -> report_assets\figures\fig_stage3c_point_crop_remote_head_near.png  origin=(87, 313)  original_size=(393, 119)  sent_size=(1024, 310)
+
+--- prompt (DRY -- no API call made) ---
+The image shows an object a robot is about to grasp.
+Instruction: "hand me the remote"
+Identify up to 3 points on the object where the robot should place its gripper.
+Give each point in normalised coordinates on a 0-1000 scale, where x=0 is the left edge, x=1000 the right edge, y=0 the top edge, y=1000 the bottom edge of THIS image.
+Respond ONLY with JSON:
+{"points": [[x, y], ...], "reason": "<short>"}
+If no point on this object is appropriate for the instruction, return {"points": [], "reason": "<short>"}.

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets and local tooling
+.env
+.claude/
+.vscode/
+.idea/
+
+# Model weights (LangSAM downloads its own; never commit checkpoints)
+*.pth
+*.ckpt
+
+# Regenerated outputs
+workspace/generated_assets/
+workspace/portfolio_figures/
+workspace/results/
+figures/out/
+*.mp4

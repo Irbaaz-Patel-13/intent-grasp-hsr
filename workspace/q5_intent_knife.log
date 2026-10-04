@@ -1,0 +1,9 @@
+table: plane z=0.451, x[0.39,0.78] y[-0.18,0.29], 71395 surface pts
+   object 0:  1638 pts, span 0.167 m, height 0.025 m, centroid [0.509, -0.033, 0.468]
+knife_head_near: plane 0.451, 1638 object pts, slab (lin 0.89), components: ['lateral_protrusion', 'main_body', 'segment_far', 'segment_mid', 'segment_near']
+grasp overlay: none found poses
+  "pick up the knife" -> bound 'handle' -> segment_near (lower of the object, 31 mm wide, 337 pts, evidence ok, s
+  "hand me the knife" -> bound 'handle' -> segment_near (lower of the object, 31 mm wide, 337 pts, evidence ok, s
+  "put the knife in the drawer" -> bound 'handle' -> segment_near (lower of the object, 31 mm wide, 337 pts, evidence ok, s
+
+wrote report_assets/figures/fig_stage4_knife_same_part_three_tasks.png

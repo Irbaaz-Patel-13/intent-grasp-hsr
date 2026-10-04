@@ -1,0 +1,41 @@
+{
+  "figure": "NEW-H",
+  "claim": "Same object, two real instructions: reasoning commits to a confident target_part string in both cases; only perception's real geometric measurement determines whether execution is even attempted.",
+  "exact_source_files": [
+    "captures_pairs_2/cap_mug_head_near.npz (reused from NEW-A, same physical mug)",
+    "q6_intent_mug.log (left column: reasoning+perception)",
+    "Experiment_Logs/2026-08-07/constraints.json (right column: reasoning, real anchor trial)",
+    "part_adaptive.py:520-524 (evidence gate)",
+    "trials.csv trial 9 (left column kinematics, real z_rise_m=0.1420)"
+  ],
+  "processing_script": "new_h_three_layer_limit.py",
+  "processing_command": "som_part_selection._load_and_isolate(cap_mug_head_near.npz) -> part_adaptive.project_points_to_pixels() for the slide variant's real pixel-space component overlay (same technique, same capture as NEW-A)",
+  "displayed_values": {
+    "left_column": {
+      "instruction": "move this out of the way",
+      "target_part": "body",
+      "component": "main_body",
+      "n": 1390,
+      "closing_width_mm": 18,
+      "evidence": "ok",
+      "kinematics": "GRASP_OK, z_rise_m=0.1420 (trials.csv trial 9)"
+    },
+    "right_column": {
+      "instruction": "I'd like a hot drink",
+      "target_part": "handle",
+      "components": [
+        "lateral_protrusion (53pts/4mm)",
+        "lateral_protrusion_1 (36pts/3mm)"
+      ],
+      "evidence": "NOISE (both)",
+      "kinematics": "not attempted (refused before execution)"
+    }
+  },
+  "known_limitations": [
+    "Instruction substitution (disclosed): no real pour-toned instruction in this repo resolves target_part='body' (all real ones resolve 'handle'); 'move this out of the way' -> body -> main_body is q6_intent_mug.log's own real bind_part result, substituted honestly in its place.",
+    "Left/right columns are two independent real runs, not a matched pair on the same session.",
+    "Trial 9's z_rise is this same anchor capture's own real successful execution, not logged as this exact instruction's own trial (trials.csv records no instruction string).",
+    "Object identity verified this session: same physical red mug as Figure 3 (see NEW-A manifest object_identity_check)."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

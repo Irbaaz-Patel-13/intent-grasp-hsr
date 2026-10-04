@@ -1,0 +1,4 @@
+name,width_mm,pixels,recovered,note
+mug handle,4.0,2.5,false,below evidence floor
+knife handle,,15.2,true,
+# fill in the remaining measured components, then re-run

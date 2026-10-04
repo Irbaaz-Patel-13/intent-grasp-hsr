@@ -1,0 +1,509 @@
+[
+ {
+  "scene": "TV_remote",
+  "kind": "intent",
+  "instruction": "I want to change the TV channel",
+  "step1": {
+   "task_goal": "Change the TV channel to a different one",
+   "functional_requirements": [
+    "Ability to send signals to the TV",
+    "Compatibility with the TV model",
+    "User interface for selecting channels"
+   ],
+   "required_object_type": "Remote control",
+   "required_properties": [
+    "Infrared or RF signal transmission",
+    "Buttons or touchscreen for channel selection",
+    "Power source (batteries or rechargeable)"
+   ]
+  },
+  "step2": {
+   "target_object": "remote control",
+   "object_description": "The remote control is suitable for changing the TV channel as it can send signals to the TV and has a user interface for selecting channels.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair in the center of the image"
+  },
+  "step3": {
+   "target_object": "remote control",
+   "target_part": "sides",
+   "constraints": {
+    "keep_clear": [
+     "front panel"
+    ],
+    "keep_clear_reasons": [
+     "Covering this would block the buttons and IR sensor needed to change the channel."
+    ],
+    "post_grasp_motion": "none",
+    "stability_priority": "low",
+    "thermal_or_hygiene": null
+   },
+   "rationale": "Grasping the sides of the remote control allows access to the front panel where the buttons and IR sensor are located, which are necessary for changing the TV channel. The task does not require moving the remote, so stability is not a high priority.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "coke_can",
+  "kind": "intent",
+  "instruction": "I'm thirsty and I'd like something fizzy to drink",
+  "step1": {
+   "task_goal": "Quench thirst with a fizzy drink",
+   "functional_requirements": [
+    "The object must contain a fizzy liquid",
+    "The object must be easy to open",
+    "The object must be safe to drink from"
+   ],
+   "required_object_type": "Beverage container",
+   "required_properties": [
+    "Contains carbonated liquid",
+    "Sealable and resealable",
+    "Made of food-safe material"
+   ]
+  },
+  "step2": {
+   "target_object": "soda can",
+   "object_description": "The soda can contains a fizzy drink, is easy to open, and is safe to drink from.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair in the center of the image"
+  },
+  "step3": {
+   "target_object": "soda can",
+   "target_part": "side",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "low",
+    "thermal_or_hygiene": "null"
+   },
+   "rationale": "For drinking from a soda can, the side is the most natural part to grasp as it allows easy access to the top for opening and drinking. There are no surfaces that must remain clear to perform the task, as the can is simply being moved to a position for drinking. The stability priority is low because the can is not being tilted or poured, just translated. There are no thermal or hygiene concerns specific to this task.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "dishwash_bottle",
+  "kind": "intent",
+  "instruction": "I need to wash up these dirty dishes",
+  "step1": {
+   "task_goal": "Clean the dirty dishes",
+   "functional_requirements": [
+    "Remove food residues",
+    "Apply cleaning agent",
+    "Rinse with water",
+    "Dry the dishes"
+   ],
+   "required_object_type": "Cleaning tool",
+   "required_properties": [
+    "Water-resistant",
+    "Abrasive surface",
+    "Handle for grip"
+   ]
+  },
+  "step2": {
+   "target_object": "dish soap bottle",
+   "object_description": "The dish soap bottle contains cleaning agent necessary for removing food residues from dishes.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair in the center of the image"
+  },
+  "step3": {
+   "target_object": "dish soap bottle",
+   "target_part": "body",
+   "constraints": {
+    "keep_clear": [
+     "nozzle"
+    ],
+    "keep_clear_reasons": [
+     "Covering this would block the soap from dispensing."
+    ],
+    "post_grasp_motion": "tilt_pour",
+    "stability_priority": "med",
+    "thermal_or_hygiene": null
+   },
+   "rationale": "For applying dish soap, the bottle needs to be tilted to pour the soap out. Grasping the body allows for easy tilting while keeping the nozzle clear for dispensing. The stability priority is medium as the bottle needs to be controlled during pouring to avoid spills.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "metal_spoon",
+  "kind": "intent",
+  "instruction": "I want to stir sugar into my tea",
+  "step1": {
+   "task_goal": "Mix sugar evenly into the tea",
+   "functional_requirements": [
+    "The object must be able to reach the bottom of the cup",
+    "The object must be able to move in a circular motion",
+    "The object must be safe for contact with food and hot liquids"
+   ],
+   "required_object_type": "Spoon",
+   "required_properties": [
+    "Long enough to reach the bottom of a cup",
+    "Heat resistant",
+    "Food safe"
+   ]
+  },
+  "step2": {
+   "target_object": "spoon",
+   "object_description": "The spoon is suitable for mixing sugar into tea as it can reach the bottom of the cup, move in a circular motion, and is safe for contact with food and hot liquids.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair"
+  },
+  "step3": {
+   "target_object": "spoon",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "low",
+    "thermal_or_hygiene": "safe for food contact"
+   },
+   "rationale": "Grasping the handle allows the spoon to reach the bottom of the cup and move in a circular motion without obstructing any functional part of the spoon. The task involves stirring, which requires translation motion, and the handle is safe for contact with food and hot liquids.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "pot_with_handle_and_lid",
+  "kind": "intent",
+  "instruction": "I want to boil some water for pasta",
+  "step1": {
+   "task_goal": "Boil water for cooking pasta",
+   "functional_requirements": [
+    "Heat water to boiling point",
+    "Contain water safely during heating"
+   ],
+   "required_object_type": "Pot or kettle",
+   "required_properties": [
+    "Heat-resistant",
+    "Waterproof",
+    "Stable base",
+    "Handle for safe handling"
+   ]
+  },
+  "step2": {
+   "target_object": "pot",
+   "object_description": "The pot is suitable for boiling water as it can contain water safely and is designed for heating.",
+   "confidence": 0.95,
+   "approximate_location": "on the table in the center of the image"
+  },
+  "step3": {
+   "target_object": "pot",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+   },
+   "rationale": "Grasping the handle allows for safe manipulation of the pot without obstructing any functional surfaces. The handle is designed for this purpose, ensuring stability and avoiding contact with hot surfaces. The task involves translating the pot to the stove, requiring a stable grip to prevent tipping or spilling.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_cokecan",
+  "kind": "intent",
+  "instruction": "I'd like a hot drink",
+  "step1": {
+   "task_goal": "Prepare a hot drink for the user.",
+   "functional_requirements": [
+    "Heat liquid to an appropriate temperature",
+    "Contain the liquid safely",
+    "Allow for safe handling and pouring"
+   ],
+   "required_object_type": "Container",
+   "required_properties": [
+    "Heat-resistant",
+    "Liquid-holding",
+    "Handle for safe pouring"
+   ]
+  },
+  "step2": {
+   "target_object": "red mug",
+   "object_description": "The red mug is suitable for containing hot liquids, allowing for safe handling and pouring.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair, left side"
+  },
+  "step3": {
+   "target_object": "red mug",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [
+     "rim"
+    ],
+    "keep_clear_reasons": [
+     "Covering this would block the liquid's exit path during pouring."
+    ],
+    "post_grasp_motion": "tilt_pour",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+   },
+   "rationale": "Grasping the handle allows for safe handling and pouring of the hot liquid without obstructing the rim, which is necessary for pouring. The handle provides a stable grip, minimizing the risk of slipping or tipping, and avoids direct contact with the hot surface of the mug.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_cokecan",
+  "kind": "intent",
+  "instruction": "I'm thirsty and I'd like something fizzy to drink",
+  "step1": {
+   "task_goal": "Quench thirst with a fizzy drink",
+   "functional_requirements": [
+    "The object must contain a fizzy liquid",
+    "The object must be easy to open",
+    "The object must be safe to drink from"
+   ],
+   "required_object_type": "Beverage container",
+   "required_properties": [
+    "Contains carbonated liquid",
+    "Sealable and resealable",
+    "Made of food-safe material"
+   ]
+  },
+  "step2": {
+   "target_object": "can",
+   "object_description": "The can is likely to contain a fizzy drink, is easy to open, and is designed for safe drinking.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair, to the right of the red mug"
+  },
+  "step3": {
+   "target_object": "can",
+   "target_part": "side",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "handover",
+    "stability_priority": "low",
+    "thermal_or_hygiene": "null"
+   },
+   "rationale": "For the task of quenching thirst with a fizzy drink, the can needs to be easily opened and safe to drink from. Grasping the side of the can allows for easy handover to a person who can then open it. There are no surfaces that need to remain clear for the task to be completed, as the opening will be used after the handover. The stability priority is low because the can is not being tilted or poured by the robot, and there are no thermal or hygiene concerns with grasping the side of the can.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_cokecan_pot",
+  "kind": "intent",
+  "instruction": "I'd like a hot drink",
+  "step1": {
+   "task_goal": "Prepare a hot drink for the user.",
+   "functional_requirements": [
+    "Heat liquid to a suitable temperature for drinking",
+    "Contain the liquid without spilling",
+    "Allow for safe handling of hot liquid"
+   ],
+   "required_object_type": "Container",
+   "required_properties": [
+    "Heat-resistant",
+    "Insulating",
+    "Ergonomic handle"
+   ]
+  },
+  "step2": {
+   "target_object": "pot with lid",
+   "object_description": "The pot can heat liquid and has a handle for safe handling of hot contents.",
+   "confidence": 0.9,
+   "approximate_location": "on the chair, center of the image"
+  },
+  "step3": {
+   "target_object": "pot with lid",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+   },
+   "rationale": "Grasping the handle allows for safe handling of the pot, which is necessary due to the hot liquid inside. The handle is designed to be grasped without obstructing any functional part of the pot, such as the lid or spout. The task involves heating and containing the liquid, so stability is a priority to prevent spills. The handle is also thermally insulated, making it safe to touch despite the pot's hot surface.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_cokecan_pot",
+  "kind": "intent",
+  "instruction": "I'm thirsty and I'd like something fizzy to drink",
+  "step1": {
+   "task_goal": "Quench thirst with a fizzy drink",
+   "functional_requirements": [
+    "Contain a carbonated liquid",
+    "Be easy to open",
+    "Be safe for consumption"
+   ],
+   "required_object_type": "Beverage container",
+   "required_properties": [
+    "Contains carbonated beverage",
+    "Sealable and resealable",
+    "Portable"
+   ]
+  },
+  "step2": {
+   "target_object": "soda can",
+   "object_description": "The soda can contains a carbonated liquid, is easy to open, and is safe for consumption.",
+   "confidence": 0.95,
+   "approximate_location": "on the table, to the left of the red mug"
+  },
+  "step3": {
+   "target_object": "soda can",
+   "target_part": "side",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "handover",
+    "stability_priority": "med",
+    "thermal_or_hygiene": "null"
+   },
+   "rationale": "Grasping the side of the soda can allows for easy handover without obstructing the top, which needs to remain clear for opening and drinking. The side provides a stable grip for the handover task, and there are no thermal or hygiene concerns with touching the can's exterior.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_cokecan_pot",
+  "kind": "intent",
+  "instruction": "I want to boil some water for pasta",
+  "step1": {
+   "task_goal": "Boil water for cooking pasta",
+   "functional_requirements": [
+    "Heat water to boiling point",
+    "Contain water safely during heating"
+   ],
+   "required_object_type": "Pot or Kettle",
+   "required_properties": [
+    "Heat-resistant",
+    "Waterproof",
+    "Stove-compatible"
+   ]
+  },
+  "step2": {
+   "target_object": "pot",
+   "object_description": "The pot is suitable for boiling water as it can contain water safely and is designed for heating.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair, center of the image"
+  },
+  "step3": {
+   "target_object": "pot",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot_surface"
+   },
+   "rationale": "Grasping the handle allows for safe manipulation of the pot without obstructing any functional surfaces. The handle is designed to be grasped and provides stability during movement. The pot will be heated, so the body will become hot, making the handle the safest contact point.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_remote_pot",
+  "kind": "intent",
+  "instruction": "I'd like a hot drink",
+  "step1": {
+   "task_goal": "Prepare a hot drink for the user.",
+   "functional_requirements": [
+    "Heat liquid to an appropriate temperature",
+    "Contain the liquid safely",
+    "Allow for safe handling and pouring"
+   ],
+   "required_object_type": "Cup or Mug",
+   "required_properties": [
+    "Heat-resistant",
+    "Insulating",
+    "Handle for safe holding"
+   ]
+  },
+  "step2": {
+   "target_object": "red mug",
+   "object_description": "The red mug is suitable for containing and serving a hot drink, allowing for safe handling and pouring.",
+   "confidence": 0.95,
+   "approximate_location": "on the table, to the right of the remote control"
+  },
+  "step3": {
+   "target_object": "red mug",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "tilt_pour",
+    "stability_priority": "med",
+    "thermal_or_hygiene": "hot surface"
+   },
+   "rationale": "Grasping the handle allows for safe handling and pouring of the hot liquid without obstructing any functional part of the mug. The handle is designed to be grasped without direct contact with the hot surface of the mug, ensuring safe handling. The task involves tilting the mug to pour, so the handle provides a stable grip for this motion.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_remote_pot",
+  "kind": "intent",
+  "instruction": "I want to change the TV channel",
+  "step1": {
+   "task_goal": "Change the TV channel to a different one",
+   "functional_requirements": [
+    "Ability to send signals to the TV",
+    "Compatibility with the TV model",
+    "Ease of use for selecting channels"
+   ],
+   "required_object_type": "Remote control",
+   "required_properties": [
+    "Infrared or RF signal transmission",
+    "Buttons or interface for channel selection",
+    "Power source (batteries)"
+   ]
+  },
+  "step2": {
+   "target_object": "remote control",
+   "object_description": "The remote control is suitable for changing the TV channel as it is designed to send signals to the TV and is typically compatible with most TV models.",
+   "confidence": 0.95,
+   "approximate_location": "on the table, in front of the chair"
+  },
+  "step3": {
+   "target_object": "remote control",
+   "target_part": "sides",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "none",
+    "stability_priority": "low",
+    "thermal_or_hygiene": null
+   },
+   "rationale": "Grasping the sides of the remote control allows access to all buttons, which is necessary for changing the TV channel. There are no surfaces that must remain clear to perform this task, as the buttons are accessible from the top. The task does not require any post-grasp motion beyond pressing buttons, and stability is not a major concern since the remote is typically used in a stationary position. There are no thermal or hygiene concerns associated with this task.",
+   "confidence": 0.95
+  }
+ },
+ {
+  "scene": "cluster_mug_remote_pot",
+  "kind": "intent",
+  "instruction": "I want to boil some water for pasta",
+  "step1": {
+   "task_goal": "Boil water for cooking pasta",
+   "functional_requirements": [
+    "Heat water to boiling point",
+    "Contain water without leaking",
+    "Be safe for use on a stove"
+   ],
+   "required_object_type": "Pot or Kettle",
+   "required_properties": [
+    "Heat-resistant",
+    "Waterproof",
+    "Stove-compatible",
+    "Sufficient capacity for pasta"
+   ]
+  },
+  "step2": {
+   "target_object": "pot",
+   "object_description": "The pot is suitable for boiling water as it can contain water without leaking and is safe for use on a stove.",
+   "confidence": 0.95,
+   "approximate_location": "on the chair, center of the image"
+  },
+  "step3": {
+   "target_object": "pot",
+   "target_part": "handle",
+   "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": "hot surface"
+   },
+   "rationale": "Grasping the handle allows for safe manipulation of the pot without obstructing any functional surfaces. The handle is designed to be grasped and provides stability during movement. The pot will be placed on a stove, so the surface will become hot, making the handle the safest part to grasp.",
+   "confidence": 0.95
+  }
+ }
+]

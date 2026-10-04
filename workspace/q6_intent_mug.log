@@ -1,0 +1,8 @@
+table: plane z=0.453, x[0.39,0.78] y[-0.18,0.28], 68369 surface pts
+   object 0:  1942 pts, span 0.082 m, height 0.068 m, centroid [0.552, 0.057, 0.495]
+   object 1:  1830 pts, span 0.080 m, height 0.066 m, centroid [0.486, 0.051, 0.492]
+mug_head_near: plane 0.453, 1942 object pts, blob (lin 0.30), components: ['lateral_protrusion', 'lateral_protrusion_1', 'main_body', 'top_protrusion']
+  "pour me a coffee" -> the component matching 'handle' is lateral_protrusion (NOISE, 4 mm, 53 pts) -- not usabl
+  "move this out of the way" -> bound 'body' -> main_body (middle of the object, 18 mm wide, 1390 pts, evidence ok, scor
+
+wrote report_assets/figures/fig_stage4_mug_evidence_gate.png

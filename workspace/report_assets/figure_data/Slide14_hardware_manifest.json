@@ -1,0 +1,36 @@
+{
+  "figure": "slide14_hardware.png",
+  "slide_number": 14,
+  "figure_purpose": "Real execution failure -> diagnosis -> patch -> recovery trial -> confirmed outcome, for the 2 real FAILURE_REGISTER.csv rows with fix_status=confirmed_with_recovery_trial. Does NOT imply all 8 execution defects were recovered, and does NOT assert any planning-layer failure.",
+  "claim": "2 of 8 real documented execution defects have a confirmed recovery trial (odom-reset guard -> trial 6 GRASP_OK; lift-fault threshold fix -> trial 5 GRASP_OK). The other 6 execution rows are patched-only, diagnosed-only, or open -- not shown as chains here.",
+  "exact_source_files": [
+    "report_assets/FAILURE_REGISTER.csv",
+    "trials.csv"
+  ],
+  "processing_script": "new_slide14_hardware.py (load_chain_rows(), new_hw_trial_history.load_trials())",
+  "processing_command": "csv.DictReader(FAILURE_REGISTER.csv) filtered to CHAIN_IDS; recovery_trial verdict cross-checked live against trials.csv via new_hw_trial_history.load_trials() -- not asserted from the register alone",
+  "displayed_values": {
+    "chains": {
+      "incident_10_odom_reset": {
+        "description": "Silent odometry reset + stale place_run.ref file drove the base toward the table between trials",
+        "source_ref": "execute_place_grasp_raw.py:237; lab_patches_0717.py:13,68",
+        "fix_artefact": "P3: odom-reset guard aborting on stale/near-zero reference",
+        "recovery_trial": 6,
+        "recovery_trial_verdict": "GRASP_OK"
+      },
+      "trial_4_lift_fault": {
+        "description": "Real logged HELD_LIFT_FAULT (grasp 16): loop kept stepping after resistance appeared at -0.302, never stopping before -0.355, over-current with no lift",
+        "source_ref": "report_bundle_20260801_1611/trials.csv line 5 (trial 4); lab_patch_0727_lift.py:11-13,21,41",
+        "fix_artefact": "earlier single-step-break threshold + hold_margin=0 option (lab_patch_0727_lift.py, 2026-07-27)",
+        "recovery_trial": 5,
+        "recovery_trial_verdict": "GRASP_OK"
+      }
+    }
+  },
+  "value_type": "measured (both the failure-register fields and the recovery-trial verdict are read live from their real source files)",
+  "known_limitations": [
+    "Only 2/17 total FAILURE_REGISTER.csv rows (8 of which are execution-layer) have fix_status=confirmed_with_recovery_trial. trial_1_abort/trial_3_abort are 'unexplained' (fix_status=open) -- excluded from this figure, not silently presented as recovered.",
+    "This figure's '8' refers specifically to execution-LAYER failures (FAILURE_REGISTER.csv, layer=execution), not the register's real 17-row grand total (see NEW-F) -- the two numbers are not interchangeable and this figure never states '8' as the overall total."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

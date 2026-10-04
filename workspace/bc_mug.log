@@ -1,0 +1,22 @@
+components found: ['lateral_protrusion', 'lateral_protrusion_1', 'main_body', 'top_protrusion']
+[som_part_selection] candidate order: largest-first (fallback -- object not elongated)
+[som_part_selection] label collision(s) resolved for region(s): [0, 1, 2, 3]
+wrote report_assets/figures/fig_stage3b_som_marks_mug.png
+
+--- region list ---
+  0: closing width 18 mm, 1390 points, 85.5% of object
+  1: closing width 7 mm, 147 points, 9.0% of object (below evidence floor)
+  2: closing width 4 mm, 53 points, 3.3% of object (below evidence floor)
+  3: closing width 3 mm, 36 points, 2.2% of object (below evidence floor)
+
+--- prompt (DRY -- no API call made) ---
+A robot is about to act on the object shown, following this instruction: "pour me a coffee"
+
+The image has 4 numbered candidate regions marked on the object, each a distinct colour-tinted patch with a number label. Measured properties of each region:
+  0: closing width 18 mm, 1390 points, 85.5% of object
+  1: closing width 7 mm, 147 points, 9.0% of object (below evidence floor)
+  2: closing width 4 mm, 53 points, 3.3% of object (below evidence floor)
+  3: closing width 3 mm, 36 points, 2.2% of object (below evidence floor)
+
+Considering the instruction and each region's measured size, position and share of the object, which numbered region should the robot grasp? Respond ONLY with JSON: {"region": <int>, "reason": "<short>"}
+If none of the regions is an appropriate place to grasp for this instruction, set region to -1.

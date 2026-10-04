@@ -1,0 +1,66 @@
+pass_no,scene,instruction,expected,required_type,picked,part,keep_clear,correct
+1,TV_remote,I want to change the TV channel,remote,Remote control,remote control,sides,front face,1
+1,coke_can,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,top,1
+1,dishwash_bottle,I need to wash up these dirty dishes,bottle,Cleaning tool,dish soap bottle,body,nozzle,1
+1,metal_spoon,I want to stir sugar into my tea,spoon,Spoon,spoon,handle,-,1
+1,pot_with_handle_and_lid,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+1,cluster_mug_cokecan,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+1,cluster_mug_cokecan,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+1,cluster_mug_cokecan_pot,I'd like a hot drink,mug,Container,pot with lid,handle,spout,0
+1,cluster_mug_cokecan_pot,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+1,cluster_mug_cokecan_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+1,cluster_mug_remote_pot,I'd like a hot drink,mug,Cup or mug,red mug,handle,-,1
+1,cluster_mug_remote_pot,I want to change the TV channel,remote,Remote control,remote control,sides,front face,1
+1,cluster_mug_remote_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+2,TV_remote,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+2,coke_can,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+2,dishwash_bottle,I need to wash up these dirty dishes,bottle,Cleaning tool,dish soap bottle,body,nozzle,1
+2,metal_spoon,I want to stir sugar into my tea,spoon,Spoon,spoon,handle,-,1
+2,pot_with_handle_and_lid,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+2,cluster_mug_cokecan,I'd like a hot drink,mug,Container,red mug,handle,rim,1
+2,cluster_mug_cokecan,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,top tab,1
+2,cluster_mug_cokecan_pot,I'd like a hot drink,mug,Container,pot with lid,handle,spout;lid,0
+2,cluster_mug_cokecan_pot,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,-,1
+2,cluster_mug_cokecan_pot,I want to boil some water for pasta,pot,Pot or kettle,pot,handle,-,1
+2,cluster_mug_remote_pot,I'd like a hot drink,mug,Container,pot,handle,-,0
+2,cluster_mug_remote_pot,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+2,cluster_mug_remote_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+3,TV_remote,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+3,coke_can,I'm thirsty and I'd like something fizzy to drink,can,Container with fizzy drink,soda can,side,-,1
+3,dishwash_bottle,I need to wash up these dirty dishes,bottle,Cleaning tool,dish soap bottle,body,nozzle,1
+3,metal_spoon,I want to stir sugar into my tea,spoon,Spoon,spoon,handle,-,1
+3,pot_with_handle_and_lid,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+3,cluster_mug_cokecan,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+3,cluster_mug_cokecan,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+3,cluster_mug_cokecan_pot,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+3,cluster_mug_cokecan_pot,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,top tab,1
+3,cluster_mug_cokecan_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+3,cluster_mug_remote_pot,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+3,cluster_mug_remote_pot,I want to change the TV channel,remote,Remote control,remote control,sides,front panel,1
+3,cluster_mug_remote_pot,I want to boil some water for pasta,pot,Pot or kettle,pot,handle,-,1
+4,TV_remote,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+4,coke_can,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,top tab,1
+4,dishwash_bottle,I need to wash up these dirty dishes,bottle,Cleaning tool,dish soap bottle,body,nozzle,1
+4,metal_spoon,I want to stir sugar into my tea,spoon,Spoon,spoon,handle,-,1
+4,pot_with_handle_and_lid,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+4,cluster_mug_cokecan,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+4,cluster_mug_cokecan,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,can,side,-,1
+4,cluster_mug_cokecan_pot,I'd like a hot drink,mug,Drink preparation appliance or tool,pot with lid,handle,-,0
+4,cluster_mug_cokecan_pot,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+4,cluster_mug_cokecan_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+4,cluster_mug_remote_pot,I'd like a hot drink,mug,Container,red mug,handle,-,1
+4,cluster_mug_remote_pot,I want to change the TV channel,remote,Remote control,remote control,sides,front face,1
+4,cluster_mug_remote_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+5,TV_remote,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+5,coke_can,I'm thirsty and I'd like something fizzy to drink,can,Container for fizzy drink,soda can,side,-,1
+5,dishwash_bottle,I need to wash up these dirty dishes,bottle,Cleaning tool,dish soap bottle,body,nozzle,1
+5,metal_spoon,I want to stir sugar into my tea,spoon,Spoon,spoon,handle,-,1
+5,pot_with_handle_and_lid,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+5,cluster_mug_cokecan,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+5,cluster_mug_cokecan,I'm thirsty and I'd like something fizzy to drink,can,Beverage container,soda can,side,-,1
+5,cluster_mug_cokecan_pot,I'd like a hot drink,mug,Cup or Mug,red mug,handle,-,1
+5,cluster_mug_cokecan_pot,I'm thirsty and I'd like something fizzy to drink,can,Container,soda can,side,-,1
+5,cluster_mug_cokecan_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1
+5,cluster_mug_remote_pot,I'd like a hot drink,mug,Container,red mug,handle,-,1
+5,cluster_mug_remote_pot,I want to change the TV channel,remote,Remote control,remote control,sides,-,1
+5,cluster_mug_remote_pot,I want to boil some water for pasta,pot,Pot or Kettle,pot,handle,-,1

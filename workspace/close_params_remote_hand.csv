@@ -1,0 +1,26 @@
+grasp_id,part_width_m,cage_gap_m,cage_motor_rad,close_z,plane_z,obj_top_z,force_level,effort,hold_margin_rad,lift_m,requires_controlled_tilt,retreat,ok,note
+0,0.1211,0.125,1.159,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+1,0.0952,0.1152,0.991,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+2,0.0974,0.1174,1.025,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+3,0.1152,0.125,1.159,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+4,0.1055,0.125,1.159,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+5,0.1045,0.1245,1.149,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+6,0.1065,0.125,1.159,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+7,0.0991,0.1191,1.055,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+8,0.1071,0.125,1.159,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+9,0.1045,0.1245,1.15,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+10,0.0932,0.1132,0.967,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+11,0.1034,0.1234,1.131,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+12,0.098,0.118,1.036,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+13,0.1001,0.1201,1.073,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+14,0.0382,0.0582,0.038,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 38mm vs scene median 95mm
+15,0.0703,0.0903,0.65,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+16,0.0759,0.0959,0.741,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+17,0.072,0.092,0.678,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+18,0.0531,0.0731,0.297,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 53mm vs scene median 95mm
+19,0.049,0.069,0.217,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 49mm vs scene median 95mm
+20,0.0457,0.0657,0.161,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 46mm vs scene median 95mm
+21,0.0509,0.0709,0.254,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 51mm vs scene median 95mm
+22,0.0439,0.0639,0.131,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 44mm vs scene median 95mm
+23,0.044,0.064,0.132,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 44mm vs scene median 95mm
+24,0.067,0.087,0.593,0.4506,0.4488,0.4756,gentle,0.15,0.0,0.1,0,toward_receiver,1,

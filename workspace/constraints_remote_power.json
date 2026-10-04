@@ -1,0 +1,16 @@
+{
+  "instruction": "turn the television on",
+  "target_object": "remote control",
+  "target_part": "sides",
+  "constraints": {
+    "keep_clear": [
+      "front face"
+    ],
+    "keep_clear_reasons": [
+      "Covering this would block the infrared signal from reaching the television."
+    ],
+    "post_grasp_motion": "none",
+    "stability_priority": "low",
+    "thermal_or_hygiene": null
+  }
+}

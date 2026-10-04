@@ -1,0 +1,26 @@
+grasp_id,part_width_m,cage_gap_m,cage_motor_rad,close_z,plane_z,obj_top_z,force_level,effort,hold_margin_rad,lift_m,requires_controlled_tilt,retreat,ok,note
+0,0.1523,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 152mm vs scene median 110mm WIDTH GATE: exceeds aperture
+1,0.1811,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 181mm vs scene median 110mm WIDTH GATE: exceeds aperture
+2,0.0862,0.1062,0.882,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+3,0.1345,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+4,0.0918,0.1118,0.95,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+5,0.1299,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+6,0.1019,0.1219,1.104,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+7,0.108,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+8,0.1137,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+9,0.1274,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+10,0.0826,0.1026,0.838,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+11,0.1269,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+12,0.1351,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+13,0.0615,0.0815,0.469,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH ARTIFACT: 61mm vs scene median 110mm
+14,0.0812,0.1012,0.82,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+15,0.11,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+16,0.098,0.118,1.037,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+17,0.11,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+18,0.1209,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+19,0.1249,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+20,0.1426,0.125,1.159,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,0,WIDTH GATE: exceeds aperture
+21,,,,,0.4618,0.559,,,,,0,,0,too few pts (0)
+22,0.094,0.114,0.976,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+23,0.0794,0.0994,0.799,0.5104,0.4618,0.559,gentle,0.15,0.0,0.1,0,toward_receiver,1,
+24,,,,,0.4618,0.559,,,,,0,,0,too few pts (0)

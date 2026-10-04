@@ -1,0 +1,12 @@
+[submodule "third_party/contact_graspnet_pytorch"]
+	path = third_party/contact_graspnet_pytorch
+	url = https://github.com/Irbaaz-Patel-13/contact_graspnet_pytorch.git
+[submodule "third_party/hsr_description"]
+	path = third_party/hsr_description
+	url = https://github.com/Irbaaz-Patel-13/hsr_description.git
+[submodule "third_party/hsr_meshes"]
+	path = third_party/hsr_meshes
+	url = https://github.com/ToyotaResearchInstitute/hsr_meshes.git
+[submodule "third_party/YCB_Dataset"]
+	path = third_party/YCB_Dataset
+	url = https://github.com/Irbaaz-Patel-13/YCB_Dataset.git

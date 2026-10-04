@@ -1,0 +1,26 @@
+components found: ['lateral_protrusion', 'main_body', 'rim_ring', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+[som_part_selection] label collision(s) resolved for region(s): [0, 1, 2, 3, 4]
+wrote report_assets/figures/fig_stage3b_som_marks_remote.png
+
+--- region list ---
+  0: closing width 18 mm, 284 points, 4.1% of object
+  1: closing width 37 mm, 1346 points, 19.5% of object
+  2: closing width 43 mm, 1565 points, 22.7% of object
+  3: closing width 38 mm, 286 points, 4.1% of object
+  4: closing width 40 mm, 1649 points, 23.9% of object
+  5: closing width 41 mm, 1766 points, 25.6% of object
+
+--- prompt (DRY -- no API call made) ---
+A robot is about to act on the object shown, following this instruction: "hand me the remote"
+
+The image has 6 numbered candidate regions marked on the object, each a distinct colour-tinted patch with a number label. Measured properties of each region:
+  0: closing width 18 mm, 284 points, 4.1% of object
+  1: closing width 37 mm, 1346 points, 19.5% of object
+  2: closing width 43 mm, 1565 points, 22.7% of object
+  3: closing width 38 mm, 286 points, 4.1% of object
+  4: closing width 40 mm, 1649 points, 23.9% of object
+  5: closing width 41 mm, 1766 points, 25.6% of object
+
+Considering the instruction and each region's measured size, position and share of the object, which numbered region should the robot grasp? Respond ONLY with JSON: {"region": <int>, "reason": "<short>"}
+If none of the regions is an appropriate place to grasp for this instruction, set region to -1.

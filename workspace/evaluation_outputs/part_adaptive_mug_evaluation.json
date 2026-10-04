@@ -1,0 +1,68 @@
+{
+  "input": "D:\\Afford-Grasp\\Backups\\2026-08-07\\Afford-Grasp\\captures_obj\\cap_mug_head_near.npz",
+  "cloud_key": "depth",
+  "raw_points": 480,
+  "cropped_points": 480,
+  "object_points": 480,
+  "crop_radius_m": 0.13,
+  "seed_xy": [
+    0.0,
+    0.0
+  ],
+  "isolation": {
+    "method": "voxel_cc",
+    "n_clusters": 1,
+    "kept": 480,
+    "dropped": 0,
+    "seed_dist": 0.0,
+    "cluster_sizes": [
+      480
+    ]
+  },
+  "shape": {
+    "centroid": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "eigvals": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "extent": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "linearity": 0.0,
+    "planarity": 0.0,
+    "sphericity": 0.0,
+    "shape_class": "blob",
+    "height": 0.0,
+    "max_horizontal": 0.0,
+    "hollow": false,
+    "object_too_wide": false
+  },
+  "decomposition": {
+    "shape_class": "blob",
+    "extent": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "linearity": 0.0,
+    "object_too_wide": false,
+    "max_horizontal": 0.0,
+    "available": [
+      "far_half",
+      "whole"
+    ]
+  },
+  "parts": {
+    "whole": 480,
+    "far_half": 480
+  },
+  "components": {},
+  "component_descriptions": {}
+}

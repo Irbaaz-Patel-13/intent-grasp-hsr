@@ -1,0 +1,90 @@
+{
+  "figure": "NEW-HW",
+  "claim": "Real logged hardware trial series ran trials 1-7 and 9-12; trial 8 has no record (a real gap, preserved, not renumbered or interpolated). Trials 9-12 (fully autonomous) are tightly repeatable: z-rise spread computed directly from the file.",
+  "exact_source_files": [
+    "trials.csv"
+  ],
+  "processing_script": "new_hw_trial_history.py (load_trials())",
+  "processing_command": "csv.DictReader(trials.csv); trial_id parsed from each row's own note field via regex 'trial (\\d+)'; z_rise_m/verdict read directly",
+  "displayed_values": {
+    "n_numbered_trials": 11,
+    "missing_trial_ids": [
+      8
+    ],
+    "per_trial": [
+      {
+        "trial_id": 1,
+        "verdict": "ABORT_",
+        "z_rise_m": null
+      },
+      {
+        "trial_id": 2,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.0961
+      },
+      {
+        "trial_id": 3,
+        "verdict": "ABORT_",
+        "z_rise_m": null
+      },
+      {
+        "trial_id": 4,
+        "verdict": "HELD_LIFT_FAULT",
+        "z_rise_m": 0.0001
+      },
+      {
+        "trial_id": 5,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1534
+      },
+      {
+        "trial_id": 6,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1532
+      },
+      {
+        "trial_id": 7,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1532
+      },
+      {
+        "trial_id": 9,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.142
+      },
+      {
+        "trial_id": 10,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1418
+      },
+      {
+        "trial_id": 11,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1416
+      },
+      {
+        "trial_id": 12,
+        "verdict": "GRASP_OK",
+        "z_rise_m": 0.1418
+      }
+    ],
+    "autonomous_cluster_trials": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "autonomous_cluster_z_rise_m": [
+      0.142,
+      0.1418,
+      0.1416,
+      0.1418
+    ],
+    "autonomous_cluster_spread_mm": 0.4
+  },
+  "known_limitations": [
+    "One additional real row ('live demo', 2026-08-03) exists in trials.csv without a 'trial N' note -- excluded from the numbered series, not assigned a fabricated trial number.",
+    "ABORT_ trials (1, 3) have no z_rise_m recorded (no lift occurred) -- shown as X markers at the axis floor, not defaulted to 0 and hidden."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

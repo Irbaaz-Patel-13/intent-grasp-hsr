@@ -1,0 +1,6 @@
+scene,target_object,target_part,keep_clear,motion,stability,thermal,shape,linearity,long_mm,minor_mm,over_aperture,roll_apply,roll_deg,n_ok,width_med,force,close_z,lift,tilt,aff_z,plane_z,error,instruction,roll_reason,obj_pts,geom_error
+TV_remote,TV remote control,middle section,-,handover,low,-,elongated,0.92,190,13,0,1,31.6,17,0.0364,gentle,0.4685,0.1,0,0.486,0.467,,hand me the TV remote,elongated part: rotating closing axis 31.6 deg to close acro,1896,
+cluster_mug_cokecan_pot,pot,handle,-,translate,high,null,compact,0.39,171,46,0,0,41.2,14,0.0139,firm,0.5203,0.1,0,0.54,0.468,,pick up the pot,part is compact (linearity 0.39) -- closing direction is not,3736,
+cluster_mug_remote_pot,TV remote control,middle section,-,handover,low,-,compact,0.26,180,73,0,0,61.6,8,0.0918,gentle,0.5104,0.1,0,0.487,0.461,,hand me the TV remote,part is compact (linearity 0.26) -- closing direction is not,5068,
+metal_spoon,spoon,handle,-,translate,med,-,compact,0.5,26,9,0,0,71.5,19,0.0263,standard,0.4598,0.1,0,0.466,0.465,,pick up the spoon,part is compact (linearity 0.50) -- closing direction is not,102,
+pot_with_handle_and_lid,pot,handle,-,translate,high,hot surface,compact,0.43,196,147,1,0,49.5,20,0.0171,firm,0.5189,0.1,0,0.527,0.463,,pick up the pot,part is compact (linearity 0.43) -- closing direction is not,5859,

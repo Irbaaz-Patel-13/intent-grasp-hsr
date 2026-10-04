@@ -1,0 +1,4 @@
+isolation: {'method': 'voxel_cc', 'n_clusters': 1, 'kept': 3490, 'dropped': 0, 'seed_dist': 0.012, 'cluster_sizes': [3490]}
+crop 0.10 m, 3490 pts, slab
+bound 'handle' -> segment_near (lower of the object, 36 mm wide, 945 pts, evidence ok, score 7.5)
+wrote report_assets/figures/fig_stage5_partmask_knife_handle_pick.png

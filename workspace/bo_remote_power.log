@@ -1,0 +1,9 @@
+components found: ['lateral_protrusion', 'main_body', 'rim_ring', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+wrote crop (as SENT, upscaled) -> report_assets/figures/fig_stage3c_point_remote_power.png  origin=(87, 313)  original_size=(393, 119)  sent_size=(1024, 310)
+
+outcome: SPLIT  note=points disagree across components: {'lateral_protrusion': 1, 'rim_ring': 1}
+raw normalised points (0-1000): [[250, 500], [750, 500]]
+full-image points (col,row): [(185.25, 372.5), (381.75, 372.5)]
+  point (185.2,372.5) -> rim_ring  method=nearest  dist_px=9.4  off_object=False
+  point (381.8,372.5) -> lateral_protrusion  method=nearest  dist_px=10.1  off_object=False

@@ -1,0 +1,22 @@
+{
+ "scene": "bowl_head_far",
+ "instruction": "pick up the bowl head far",
+ "target_object": "bowl",
+ "target_part": "rim",
+ "keep_clear": "-",
+ "motion": "translate",
+ "stability": "med",
+ "thermal": "-",
+ "n_ok": 0,
+ "aff_z": 0.447,
+ "plane_z": 0.449,
+ "shape": "compact",
+ "linearity": 0.22,
+ "long_mm": 140,
+ "minor_mm": 10,
+ "obj_pts": 80,
+ "over_aperture": 0,
+ "roll_apply": 0,
+ "roll_deg": 72.9,
+ "roll_reason": "part is compact (linearity 0.22) -- closing direction is not"
+}

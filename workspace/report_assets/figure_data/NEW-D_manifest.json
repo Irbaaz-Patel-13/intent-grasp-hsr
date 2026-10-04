@@ -1,0 +1,127 @@
+{
+  "figure": "NEW-D",
+  "claim": "Three independent part-naming methods do not consistently identify the same physical part; agreement is computed from real per-row data, not assumed: 4/9 rows are full 3-way disagreement (string-exact on chosen_component).",
+  "exact_source_files": [
+    "report_assets/PART_NAMING_ABLATION.csv",
+    "report_assets/figures/fig_stage3b_som_knife_pick.png",
+    "report_assets/figures/fig_stage3c_point_knife_pick.png",
+    "report_assets/figures/fig_stage0_capture_knife_near.png"
+  ],
+  "processing_script": "new_d_method_disagreement.py (load_grid(), verify_som_hash_groups())",
+  "processing_command": "csv.DictReader(PART_NAMING_ABLATION.csv), stability-repeat rows excluded, keyed by (object, instruction) in first-seen order; chosen_component read directly per method row (see _cell_label() docstring for the column-shift bug this avoids)",
+  "displayed_values": {
+    "rows": [
+      {
+        "object": "knife",
+        "instruction": "pick up the knife",
+        "per_method": {
+          "A_heuristic": "lateral_protrusion",
+          "B_som": "segment_c",
+          "C_pointing": "(off-object)"
+        },
+        "n_distinct_answers": 3,
+        "all_agree": false
+      },
+      {
+        "object": "knife",
+        "instruction": "hand me the knife",
+        "per_method": {
+          "A_heuristic": "lateral_protrusion",
+          "B_som": "lateral_protrusion",
+          "C_pointing": "(off-object)"
+        },
+        "n_distinct_answers": 2,
+        "all_agree": false
+      },
+      {
+        "object": "knife",
+        "instruction": "put the knife in the drawer",
+        "per_method": {
+          "A_heuristic": "lateral_protrusion",
+          "B_som": "segment_a",
+          "C_pointing": "(off-object)"
+        },
+        "n_distinct_answers": 3,
+        "all_agree": false
+      },
+      {
+        "object": "mug",
+        "instruction": "pour me a coffee",
+        "per_method": {
+          "A_heuristic": "(refused)",
+          "B_som": "main_body (substituted silently)",
+          "C_pointing": "(refused)"
+        },
+        "n_distinct_answers": 2,
+        "all_agree": false
+      },
+      {
+        "object": "mug",
+        "instruction": "move this out of the way",
+        "per_method": {
+          "A_heuristic": "(refused)",
+          "B_som": "main_body",
+          "C_pointing": "(refused)"
+        },
+        "n_distinct_answers": 2,
+        "all_agree": false
+      },
+      {
+        "object": "mug",
+        "instruction": "hand me the mug",
+        "per_method": {
+          "A_heuristic": "(refused)",
+          "B_som": "main_body",
+          "C_pointing": "(split)"
+        },
+        "n_distinct_answers": 3,
+        "all_agree": false
+      },
+      {
+        "object": "remote",
+        "instruction": "hand me the remote",
+        "per_method": {
+          "A_heuristic": "segment_b",
+          "B_som": "segment_c",
+          "C_pointing": "segment_b"
+        },
+        "n_distinct_answers": 2,
+        "all_agree": false
+      },
+      {
+        "object": "remote",
+        "instruction": "put the remote on the shelf",
+        "per_method": {
+          "A_heuristic": "segment_b",
+          "B_som": "segment_c",
+          "C_pointing": "segment_b"
+        },
+        "n_distinct_answers": 2,
+        "all_agree": false
+      },
+      {
+        "object": "remote",
+        "instruction": "turn the television on",
+        "per_method": {
+          "A_heuristic": "segment_b",
+          "B_som": "lateral_protrusion",
+          "C_pointing": "(split)"
+        },
+        "n_distinct_answers": 3,
+        "all_agree": false
+      }
+    ],
+    "n_full_3way_disagreement": 4,
+    "n_rows": 9,
+    "som_overlay_sha256_verified": {
+      "knife": true,
+      "mug": true,
+      "remote": true
+    }
+  },
+  "known_limitations": [
+    "Panel A (hint table) in the slide variant has no real pixel position to mark -- bind_part does not report one (CSV column: 'n/a (bind_part does not report pixel position)'); shown as text, no region box drawn, to avoid fabricating spatial evidence that doesn't exist.",
+    "knife/'hand me the knife' is the one row where A and B name the same component (lateral_protrusion) -- the CSV's own note calls this a coincidence (different underlying regions), not real agreement."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

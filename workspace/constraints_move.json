@@ -1,0 +1,12 @@
+{
+  "instruction": "Pick up the mug and move it to the other side of the table",
+  "target_object": "mug",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "high",
+    "thermal_or_hygiene": null
+  }
+}

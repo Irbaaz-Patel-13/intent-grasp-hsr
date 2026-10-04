@@ -1,0 +1,12 @@
+{
+  "instruction": "put the knife in the drawer",
+  "target_object": "knife",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "med",
+    "thermal_or_hygiene": "null"
+  }
+}

@@ -1,0 +1,10 @@
+components found: ['lateral_protrusion', 'main_body', 'segment_a', 'segment_b', 'segment_c']
+[som_part_selection] candidate order: PCA major-axis position
+wrote crop (as SENT, upscaled) -> report_assets/figures/fig_stage3c_point_knife_hand_rep2.png  origin=(190, 334)  original_size=(302, 74)  sent_size=(1024, 251)
+
+outcome: POINT_OFF_OBJECT  note=all 3 point(s) >20px from every candidate mask
+raw normalised points (0-1000): [[850, 500], [900, 500], [950, 500]]
+full-image points (col,row): [(446.7, 371.0), (461.8, 371.0), (476.9, 371.0)]
+  point (446.7,371.0) -> None  method=off_object  dist_px=37.7  off_object=True
+  point (461.8,371.0) -> None  method=off_object  dist_px=52.8  off_object=True
+  point (476.9,371.0) -> None  method=off_object  dist_px=67.9  off_object=True

@@ -1,0 +1,4 @@
+trial,iteration,pixel_error,converged,jacobian_update,source
+9,before,46.9,,,fig10_visual_servo.py:70 (TRIAL9_BEFORE_PX); report_bundle_20260801_1611/trials.csv:9 note
+9,after,12.7,,,fig10_visual_servo.py:70 (TRIAL9_AFTER_PX); report_bundle_20260801_1611/trials.csv:9 note
+12,final,17.4,,,fig10_visual_servo.py:71 (TRIAL12_RESIDUAL_PX); report_bundle_20260801_1611/trials.csv:12 note

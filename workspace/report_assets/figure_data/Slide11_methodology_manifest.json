@@ -1,0 +1,38 @@
+{
+  "figure": "methodology_slide11.png",
+  "slide_number": 11,
+  "figure_purpose": "Methodology/process diagram -- NOT a result figure. Shows the real 9-stage evaluation pipeline (perception/evaluation + execution/evaluation halves) and which real file evaluates each stage.",
+  "claim": "Process documentation only -- no quantitative result is asserted by this figure.",
+  "exact_source_files": [
+    "captures_pairs_2",
+    "vlm_stability.csv",
+    "report_assets/PART_NAMING_ABLATION.csv",
+    "batch_scene_analysis.csv",
+    "part_adaptive.py",
+    "grasp_policy.py",
+    "Backups/2026-08-07/Afford-Grasp/execute_place_grasp_raw.py",
+    "trials.csv",
+    "report_assets/FAILURE_REGISTER.csv"
+  ],
+  "processing_script": "new_methodology.py (render(), _real_sources_exist())",
+  "processing_command": "os.path.exists() checked live, per stage, at render time -- not asserted from memory",
+  "displayed_values": {
+    "stages": [
+      "REAL OBJECT / SCENE",
+      "VLM REASONING",
+      "PART GROUNDING",
+      "GEOMETRIC DECOMPOSITION",
+      "EVIDENCE GATE",
+      "GRASP GENERATION",
+      "KINEMATIC / COLLISION CHECKS",
+      "REAL HSR EXECUTION",
+      "LOGGED OUTCOME"
+    ],
+    "missing_sources_at_last_render": []
+  },
+  "value_type": "explanatory (process diagram; the only 'measured' fact is real-file existence, checked programmatically)",
+  "known_limitations": [
+    "Stage boundaries (e.g. where 'perception' ends and 'execution' begins) are this session's own structuring of the real pipeline, not a name used verbatim anywhere in the codebase."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

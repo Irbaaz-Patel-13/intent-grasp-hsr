@@ -1,0 +1,590 @@
+[
+  {
+    "object": "mug",
+    "type": "relocate",
+    "instruction": "Move the mug to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the mug to a specified position on the table.",
+      "functional_requirements": [
+        "Securely grasp the mug without spilling contents",
+        "Lift the mug to clear any obstacles on the table",
+        "Transport the mug across the table surface",
+        "Place the mug gently at the target location"
+      ],
+      "required_object_type": "Mug",
+      "required_properties": [
+        "Handle for grasping",
+        "Stable base to prevent tipping",
+        "Appropriate size for the robot's gripper"
+      ]
+    },
+    "step3": {
+      "target_object": "mug",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the handle allows for secure control of the mug during transport, minimizing the risk of spilling contents. No surfaces need to remain clear for the task of moving the mug across the table, as the task does not involve pouring or accessing the interior. The handle provides a natural grip point that balances stability and ease of movement.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "mug",
+    "type": "use",
+    "instruction": "Pour the coffee out of the mug",
+    "step1": {
+      "task_goal": "Transfer coffee from the mug to another container or surface.",
+      "functional_requirements": [
+        "The object must be able to hold liquid temporarily.",
+        "The object must have an opening to allow liquid to pour out smoothly.",
+        "The object must be easy to tilt or invert."
+      ],
+      "required_object_type": "Mug",
+      "required_properties": [
+        "Has a handle for easy gripping",
+        "Made of a material that can contain hot liquid",
+        "Has an open top for pouring"
+      ]
+    },
+    "step3": {
+      "target_object": "mug",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [
+          "rim"
+        ],
+        "keep_clear_reasons": [
+          "Covering this would block the liquid's exit path."
+        ],
+        "post_grasp_motion": "tilt_pour",
+        "stability_priority": "med",
+        "thermal_or_hygiene": "hot surface"
+      },
+      "rationale": "Grasping the handle allows the mug to be tilted easily without obstructing the rim, which is necessary for pouring. The handle also provides a safe distance from the hot surface of the mug, reducing the risk of thermal injury.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "mug",
+    "type": "handover",
+    "instruction": "Hand me the mug",
+    "step1": {
+      "task_goal": "The user wants to receive a mug, likely for drinking or holding a beverage.",
+      "functional_requirements": [
+        "The object must be graspable by a human hand.",
+        "The object must be able to hold liquid without leaking.",
+        "The object must have a handle for easy holding."
+      ],
+      "required_object_type": "mug",
+      "required_properties": [
+        "has a handle",
+        "is watertight",
+        "is of a size that fits comfortably in a human hand"
+      ]
+    },
+    "step3": {
+      "target_object": "mug",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a mug, the handle is the most natural and ergonomic part to grasp. It allows for a secure grip without obstructing the mug's opening or body, ensuring the mug can still hold liquid without spilling. The task involves handing over the mug, so the post-grasp motion is 'handover'. Stability is medium as the mug needs to be securely held but not under dynamic forces. There are no thermal or hygiene concerns specific to this task.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bottle",
+    "type": "relocate",
+    "instruction": "Move the bottle to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the bottle to a specified position on the table.",
+      "functional_requirements": [
+        "The object must be graspable.",
+        "The object must be stable during transport.",
+        "The object must be placed accurately at the target location."
+      ],
+      "required_object_type": "Bottle",
+      "required_properties": [
+        "Has a neck or body that can be grasped",
+        "Stable base to prevent tipping",
+        "Appropriate size and weight for manipulation"
+      ]
+    },
+    "step3": {
+      "target_object": "bottle",
+      "target_part": "body",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For relocating the bottle, grasping the body provides a balanced hold, ensuring stability during transport. No specific surface needs to remain clear as the task is simple relocation, and the body offers a secure grip without affecting the task's outcome.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bottle",
+    "type": "use",
+    "instruction": "Pour some water from the bottle",
+    "step1": {
+      "task_goal": "Transfer water from the bottle to another container or location.",
+      "functional_requirements": [
+        "The object must be able to hold water.",
+        "The object must have an opening to allow water to flow out."
+      ],
+      "required_object_type": "bottle",
+      "required_properties": [
+        "contains water",
+        "has an opening or spout"
+      ]
+    },
+    "step3": {
+      "target_object": "bottle",
+      "target_part": "neck",
+      "constraints": {
+        "keep_clear": [
+          "opening"
+        ],
+        "keep_clear_reasons": [
+          "covering this would block the liquid's exit path"
+        ],
+        "post_grasp_motion": "tilt_pour",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the neck allows the bottle to be tilted easily for pouring while keeping the opening clear for water to flow out. The neck provides a stable grip for controlled pouring, and there are no thermal or hygiene concerns with this part of the bottle.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bottle",
+    "type": "handover",
+    "instruction": "Hand me the bottle",
+    "step1": {
+      "task_goal": "Transfer the bottle to the user",
+      "functional_requirements": [
+        "The object must be graspable",
+        "The object must be portable",
+        "The object must be identifiable as a bottle"
+      ],
+      "required_object_type": "bottle",
+      "required_properties": [
+        "has a neck or body suitable for grasping",
+        "contains liquid or is designed to contain liquid",
+        "has a cap or opening"
+      ]
+    },
+    "step3": {
+      "target_object": "bottle",
+      "target_part": "neck",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a bottle, grasping the neck is optimal as it allows for a secure grip without obstructing any functional part of the bottle. The neck is a natural grasp point that does not interfere with the bottle's portability or identification. There are no surfaces that need to remain clear for this task, as the goal is simply to transfer the bottle to the user.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "hammer",
+    "type": "relocate",
+    "instruction": "Move the hammer to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the hammer to a specified position on the table.",
+      "functional_requirements": [
+        "The object must be graspable.",
+        "The object must be movable across the table surface.",
+        "The object must be stable when placed."
+      ],
+      "required_object_type": "hammer",
+      "required_properties": [
+        "handle for grasping",
+        "sufficient weight for stability",
+        "compact size for easy movement"
+      ]
+    },
+    "step3": {
+      "target_object": "hammer",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the handle allows for easy manipulation and movement of the hammer across the table. There are no surfaces that need to remain unobstructed for the task of moving the hammer, so keep_clear is empty. The task involves translating the hammer, and a medium stability priority is sufficient to ensure it doesn't slip during movement. There are no thermal or hygiene concerns with the hammer.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "hammer",
+    "type": "use",
+    "instruction": "Hammer the nail into the board",
+    "step1": {
+      "task_goal": "Secure the nail into the board",
+      "functional_requirements": [
+        "Apply sufficient force to drive the nail into the board",
+        "Maintain control to ensure the nail goes straight",
+        "Provide a flat surface to strike the nail head"
+      ],
+      "required_object_type": "Hammer",
+      "required_properties": [
+        "Heavy head to provide force",
+        "Flat striking surface",
+        "Ergonomic handle for grip"
+      ]
+    },
+    "step3": {
+      "target_object": "hammer",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [
+          "head"
+        ],
+        "keep_clear_reasons": [
+          "Covering the head would prevent it from striking the nail."
+        ],
+        "post_grasp_motion": "translate",
+        "stability_priority": "high",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the handle allows the robot to swing the hammer effectively, providing the necessary force and control to drive the nail straight into the board. The head must remain unobstructed to strike the nail. A high stability priority is needed to ensure the hammer does not slip during the swing.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "hammer",
+    "type": "handover",
+    "instruction": "Hand me the hammer",
+    "step1": {
+      "task_goal": "To drive a nail or perform a task requiring impact force.",
+      "functional_requirements": [
+        "The object must be able to deliver impact force.",
+        "The object must have a handle for gripping.",
+        "The object must have a head for striking."
+      ],
+      "required_object_type": "hammer",
+      "required_properties": [
+        "heavy head",
+        "sturdy handle",
+        "ergonomic grip"
+      ]
+    },
+    "step3": {
+      "target_object": "hammer",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "high",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a hammer, the handle is the most natural part to grasp as it is designed for gripping and allows for easy transfer. The head must remain unobstructed to ensure it can be used for striking once handed over. The task requires a stable grip to prevent dropping during the handover, hence a high stability priority. There are no thermal or hygiene concerns associated with the hammer.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "knife",
+    "type": "relocate",
+    "instruction": "Move the knife to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the knife to a specified position on the table.",
+      "functional_requirements": [
+        "Securely grasp the knife without causing damage or injury",
+        "Maintain balance and control while moving the knife",
+        "Place the knife accurately at the designated location"
+      ],
+      "required_object_type": "Knife",
+      "required_properties": [
+        "Handle for safe gripping",
+        "Blade edge should be protected or oriented safely during movement"
+      ]
+    },
+    "step3": {
+      "target_object": "knife",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "high",
+        "thermal_or_hygiene": "null"
+      },
+      "rationale": "Grasping the handle ensures a secure grip and minimizes the risk of injury or damage. The handle is designed for holding, providing stability and control during the relocation task. No specific surfaces need to remain clear for this task, as it involves simple translation without functional disruption.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "knife",
+    "type": "use",
+    "instruction": "Cut the apple with the knife",
+    "step1": {
+      "task_goal": "Slice the apple into smaller pieces.",
+      "functional_requirements": [
+        "The object must be sharp enough to cut through the apple.",
+        "The object must be able to be held and manipulated by the robot."
+      ],
+      "required_object_type": "knife",
+      "required_properties": [
+        "sharp blade",
+        "handle for gripping"
+      ]
+    },
+    "step3": {
+      "target_object": "knife",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [
+          "blade"
+        ],
+        "keep_clear_reasons": [
+          "Covering this would prevent the knife from cutting the apple."
+        ],
+        "post_grasp_motion": "translate",
+        "stability_priority": "high",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the handle allows the robot to manipulate the knife effectively while keeping the blade clear to cut the apple. The task requires precise control and stability to ensure the knife cuts through the apple without slipping.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "knife",
+    "type": "handover",
+    "instruction": "Hand me the knife",
+    "step1": {
+      "task_goal": "To cut or slice an item",
+      "functional_requirements": [
+        "The object must have a sharp edge",
+        "The object must be easy to handle and control"
+      ],
+      "required_object_type": "knife",
+      "required_properties": [
+        "sharp",
+        "ergonomic handle"
+      ]
+    },
+    "step3": {
+      "target_object": "knife",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "For handing over a knife, the handle is the most natural and safe part to grasp. It allows the recipient to easily take control of the knife by the handle, ensuring the sharp edge remains unobstructed and safe. There are no surfaces that must remain clear for the handover task, as the goal is simply to transfer the knife safely.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bowl",
+    "type": "relocate",
+    "instruction": "Move the bowl to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the bowl to a specified position on the table.",
+      "functional_requirements": [
+        "Securely grasp the bowl without spilling contents",
+        "Lift the bowl to clear any obstacles on the table",
+        "Transport the bowl across the table surface",
+        "Place the bowl gently at the new location"
+      ],
+      "required_object_type": "Gripper",
+      "required_properties": [
+        "Ability to adjust grip to accommodate bowl size",
+        "Non-slip surface to prevent dropping",
+        "Sufficient strength to lift the bowl"
+      ]
+    },
+    "step3": {
+      "target_object": "bowl",
+      "target_part": "rim",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the rim of the bowl allows for a secure hold without interfering with the contents inside. Since the task is to relocate the bowl, there are no surfaces that need to remain unobstructed for the task to succeed, hence keep_clear is empty. The post grasp motion is a simple translation across the table, and a medium stability priority is sufficient to prevent slipping or tipping during the move. There are no thermal or hygiene concerns with grasping the rim.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bowl",
+    "type": "use",
+    "instruction": "Pour the cereal out of the bowl",
+    "step1": {
+      "task_goal": "Transfer cereal from the bowl to another container or surface.",
+      "functional_requirements": [
+        "The object must be able to hold and pour cereal.",
+        "The object must be able to fit inside or around the bowl to scoop or pour the cereal."
+      ],
+      "required_object_type": "Spoon or similar utensil",
+      "required_properties": [
+        "Concave shape to hold cereal",
+        "Handle for manipulation",
+        "Appropriate size to fit inside the bowl"
+      ]
+    },
+    "step3": {
+      "target_object": "bowl",
+      "target_part": "rim",
+      "constraints": {
+        "keep_clear": [
+          "opening"
+        ],
+        "keep_clear_reasons": [
+          "Covering this would block the cereal's exit path."
+        ],
+        "post_grasp_motion": "tilt_pour",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the rim allows the bowl to be tilted for pouring without obstructing the opening, which is necessary for the cereal to exit. The rim provides a stable grip for tilting, and there are no thermal or hygiene concerns with this task.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "bowl",
+    "type": "handover",
+    "instruction": "Hand me the bowl",
+    "step1": {
+      "task_goal": "To receive a bowl for holding or serving contents.",
+      "functional_requirements": [
+        "The object must be able to hold contents.",
+        "The object must be easy to grasp and pass to the user."
+      ],
+      "required_object_type": "bowl",
+      "required_properties": [
+        "concave shape",
+        "sufficient depth",
+        "smooth rim for safe handling"
+      ]
+    },
+    "step3": {
+      "target_object": "bowl",
+      "target_part": "rim",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "med",
+        "thermal_or_hygiene": null
+      },
+      "rationale": "Grasping the rim allows for a secure hold while keeping the bowl's interior unobstructed for holding contents. The task involves handing over the bowl, so the grasp should facilitate easy transfer without blocking the bowl's function as a container. No specific surfaces need to be kept clear for this task, as the bowl's primary function is not obstructed by the grasp.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "pan",
+    "type": "relocate",
+    "instruction": "Move the pan to the other side of the table",
+    "step1": {
+      "task_goal": "Relocate the pan to a different position on the table.",
+      "functional_requirements": [
+        "The object must be graspable.",
+        "The object must be stable during transport.",
+        "The object must be lifted and moved horizontally."
+      ],
+      "required_object_type": "Pan",
+      "required_properties": [
+        "Handle for grasping",
+        "Sufficient weight capacity to be lifted"
+      ]
+    },
+    "step3": {
+      "target_object": "pan",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "translate",
+        "stability_priority": "high",
+        "thermal_or_hygiene": "pan may be hot"
+      },
+      "rationale": "Grasping the handle allows for stable control and avoids contact with potentially hot surfaces. The handle is designed for grasping and moving the pan, ensuring stability during transport. No surfaces need to remain clear for this task, as it is a simple relocation.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "pan",
+    "type": "use",
+    "instruction": "Fry an egg in the pan",
+    "step1": {
+      "task_goal": "Cook an egg by frying it",
+      "functional_requirements": [
+        "Heat the pan to an appropriate temperature",
+        "Prevent the egg from sticking to the pan",
+        "Ensure even cooking of the egg"
+      ],
+      "required_object_type": "Pan",
+      "required_properties": [
+        "Heat-resistant",
+        "Non-stick surface",
+        "Flat bottom"
+      ]
+    },
+    "step3": {
+      "target_object": "pan",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "none",
+        "stability_priority": "high",
+        "thermal_or_hygiene": "hot surface"
+      },
+      "rationale": "Grasping the handle allows the pan to be moved or adjusted without obstructing the cooking surface, which is essential for frying an egg. The handle is designed to be grasped and provides stability while keeping the hand away from the hot surface of the pan.",
+      "confidence": 0.95
+    }
+  },
+  {
+    "object": "pan",
+    "type": "handover",
+    "instruction": "Hand me the pan",
+    "step1": {
+      "task_goal": "To cook or prepare food using the pan.",
+      "functional_requirements": [
+        "The pan must be clean.",
+        "The pan should be of appropriate size for the cooking task.",
+        "The pan should have a handle for easy grasping."
+      ],
+      "required_object_type": "pan",
+      "required_properties": [
+        "clean",
+        "appropriate size",
+        "handle"
+      ]
+    },
+    "step3": {
+      "target_object": "pan",
+      "target_part": "handle",
+      "constraints": {
+        "keep_clear": [],
+        "keep_clear_reasons": [],
+        "post_grasp_motion": "handover",
+        "stability_priority": "low",
+        "thermal_or_hygiene": "The pan must be clean."
+      },
+      "rationale": "For handing over a pan, the handle is the most natural and ergonomic part to grasp. It allows for easy and secure handling without obstructing any functional part of the pan. Since the task is a handover, there are no surfaces that need to remain clear for the task to succeed, and the stability priority is low as the pan is not being used for cooking during the handover.",
+      "confidence": 0.95
+    }
+  }
+]

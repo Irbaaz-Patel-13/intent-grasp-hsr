@@ -1,0 +1,21 @@
+grasps: 11   keys: ['poses', 'scores', 'dist_to_aff', 'aff_center_3d', 'quality_score', 'affordance_score', 'combined_score']
+cloud key 'points': 243743 pts
+gap map: 9 points
+[constraints] from constraints.json
+plane_z=0.448  obj_top=0.467  obj_pts=3447
+scene median part_width = 0.0210 m  (artifact guard: reject >30% deviation)
+[policy] stability=med, motion=handover -> force=standard(effort 0.30, hold +0.008 rad), depth_frac=0.50, clearance=0.020 m, lift=0.10 m
+g0   w=0.0826  cage=0.1026  motor=0.837  close_z=0.4422  force=standard ok=0 WIDTH ARTIFACT: 83mm vs scene median 21mm
+g1   w=0.0659  cage=0.0859  motor=0.57   close_z=0.4422  force=standard ok=0 WIDTH ARTIFACT: 66mm vs scene median 21mm
+g2   w=0.0202  cage=0.0402  motor=-0.215 close_z=0.4422  force=standard ok=1 
+g3   w=0.0195  cage=0.0395  motor=-0.223 close_z=0.4422  force=standard ok=1 
+g4   w=0.021   cage=0.041   motor=-0.206 close_z=0.4422  force=standard ok=1 
+g5   w=0.0213  cage=0.0413  motor=-0.203 close_z=0.4422  force=standard ok=1 
+g6   w=0.021   cage=0.041   motor=-0.206 close_z=0.4422  force=standard ok=1 
+g7   w=0.0199  cage=0.0399  motor=-0.219 close_z=0.4422  force=standard ok=1 
+g8   w=0.021   cage=0.041   motor=-0.206 close_z=0.4422  force=standard ok=1 
+g9   w=0.0215  cage=0.0415  motor=-0.2   close_z=0.4422  force=standard ok=1 
+g10  w=0.0214  cage=0.0414  motor=-0.201 close_z=0.4422  force=standard ok=1 
+
+wrote close_params.csv  (9/11 ok)   constraints source: constraints.json
+scp close_params.csv to the workstation alongside place_run.csv

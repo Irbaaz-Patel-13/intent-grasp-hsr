@@ -1,0 +1,9 @@
+components found: ['lateral_protrusion', 'lateral_protrusion_1', 'main_body', 'top_protrusion']
+[som_part_selection] candidate order: largest-first (fallback -- object not elongated)
+wrote crop (as SENT, upscaled) -> report_assets/figures/fig_stage3c_point_mug_move.png  origin=(208, 285)  original_size=(155, 93)  sent_size=(1024, 614)
+
+outcome: EVIDENCE_GATE_REFUSED  note=assigned component 'lateral_protrusion' is NOISE evidence
+raw normalised points (0-1000): [[750, 600]]
+full-image points (col,row): [(324.25, 340.8)]
+  point (324.2,340.8) -> lateral_protrusion  method=nearest  dist_px=4.3  off_object=False
+chosen component: lateral_protrusion  n=53  width_mm=4  evidence=NOISE

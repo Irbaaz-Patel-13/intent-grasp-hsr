@@ -1,0 +1,21 @@
+{
+  "object_mask_px": 768544,
+  "n_candidates": 4,
+  "handle": {
+    "picked_region": 1,
+    "reason": "Region 1 corresponds to the handle of the mug.",
+    "area_px": 41914,
+    "frac_of_mug": 0.05343480659532831
+  },
+  "rim": {
+    "picked_region": 0,
+    "reason": "Region 0 corresponds to the interior opening of the cup.",
+    "area_px": 121299,
+    "frac_of_mug": 0.15721676312611899
+  },
+  "body": {
+    "area_px": 606649,
+    "frac_of_mug": 0.7893484302785527,
+    "derivation": "object_mask minus handle_mask minus rim_mask"
+  }
+}

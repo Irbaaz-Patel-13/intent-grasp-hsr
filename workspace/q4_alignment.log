@@ -1,0 +1,6 @@
+point arrays in grasps_out.npz:
+   affordance_points          6588 pts   extent 0.081 x 0.300 x 0.040 m
+   -> auto-selected 'affordance_points' (smallest array). Override with --key
+using 'affordance_points': 6588 points
+wrote report_assets/figures/fig_stage7_alignment_knife.png
+  class=elongated  misalign=0.7 deg  delta=-0.012 rad  apply=False

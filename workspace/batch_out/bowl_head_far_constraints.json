@@ -1,0 +1,12 @@
+{
+  "instruction": "pick up the bowl head far",
+  "target_object": "bowl",
+  "target_part": "rim",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "translate",
+    "stability_priority": "med",
+    "thermal_or_hygiene": null
+  }
+}

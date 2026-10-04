@@ -1,0 +1,16 @@
+{
+  "instruction": "pour the water out of the mug into the bowl",
+  "target_object": "mug",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [
+      "rim"
+    ],
+    "keep_clear_reasons": [
+      "Covering this would block the liquid's exit path."
+    ],
+    "post_grasp_motion": "tilt_pour",
+    "stability_priority": "med",
+    "thermal_or_hygiene": "The mug may contain hot liquid."
+  }
+}

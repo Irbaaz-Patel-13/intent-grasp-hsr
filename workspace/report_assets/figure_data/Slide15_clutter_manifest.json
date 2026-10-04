@@ -1,0 +1,30 @@
+{
+  "figure": "slide15_clutter.png",
+  "slide_number": 15,
+  "figure_purpose": "Unifies NEW-E (isolated-vs-cluttered slope) and NEW-G (real fused clutter cloud): the same real pipeline produces opposite gate outcomes for the same object, and the real 3D scene that measurement comes from is a genuine 8-object clutter cloud.",
+  "claim": "pot: 147mm isolated (REFUSE, over 125mm aperture) -> 46mm cluttered (PASS). Real fused cloud: 237,991 real points, 8 real objects found live.",
+  "exact_source_files": [
+    "batch_scene_analysis.csv",
+    "captures_0723/cap_pot_with_handle_and_lid.npz",
+    "captures_0723/cap_cluster_mug_cokecan_pot.npz",
+    "batch_out/cluster_mug_cokecan_pot_fused_cloud.npz"
+  ],
+  "processing_script": "new_slide15_clutter.py",
+  "processing_command": "new_e_isolated_vs_cluttered.load_rows() for the real mm values; scene_objects.find_objects() re-run live on the real fused cloud (same call new_g_clutter_scene_3d.py makes) for the 8-object overlay",
+  "displayed_values": {
+    "pot_isolated_mm": 147.0,
+    "pot_cluttered_mm": 46.0,
+    "pot_isolated_over_aperture": true,
+    "pot_cluttered_over_aperture": false,
+    "fused_cloud_n_points": 237991,
+    "fused_cloud_n_objects_found": 8
+  },
+  "value_type": "measured (mm values from batch_scene_analysis.csv; point count and object count from live re-load/re-run of the real fused cloud and scene_objects.find_objects())",
+  "known_limitations": [
+    "IMPORTANT CAVEAT (preserved verbatim from NEW-E/NEW-G): this is measurement instability, not evidence that clutter universally degrades perception -- the remote (not plotted on this slide) moves the OPPOSITE direction (13mm->73mm, both PASS).",
+    "The fused-cloud panel's live re-decomposition (if shown) is a fresh derivation, NOT asserted to equal NEW-E's cached 46mm cluttered measurement.",
+    "Only 5 real scenes exist in the batch_scene_analysis.csv dataset -- not generalised beyond them. Spoon has no cluttered-capture row.",
+    "Object IDENTITY in the fused cloud (which cluster is 'the pot') was not re-derived to pixel-exact correspondence with the original batch run."
+  ],
+  "processing_timestamp": "2026-08-09T16:34:01"
+}

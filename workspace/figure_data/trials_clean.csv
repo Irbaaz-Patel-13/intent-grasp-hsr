@@ -1,0 +1,13 @@
+trial,date,mode,outcome,z_rise_m,held,stop_reason,note,source
+1,2026-07-25,,ABORT,,,contact,"trial 1, skip_base validation",report_bundle_20260801_1611/trials.csv:2
+2,2026-07-25,,GRASP_OK,0.0961,True,contact,"trial 2, lower surface, tol 6px",report_bundle_20260801_1611/trials.csv:3
+3,2026-07-25,,ABORT,,,contact,"trial 3, recorded, autonomous",report_bundle_20260801_1611/trials.csv:4
+4,2026-07-25,,HELD_LIFT_FAULT,0.0001,True,contact,"trial 4, grasp 16, i12 fix, tol 20px",report_bundle_20260801_1611/trials.csv:5
+5,2026-07-28,hand-placed,GRASP_OK,0.1534,True,contact,"trial 5, lift patch, hand-placed (servo out of basin: mug at FOV edge)",report_bundle_20260801_1611/trials.csv:6
+6,2026-07-28,hand-placed,GRASP_OK,0.1532,True,contact,"trial 6, repeat, odom reset between trials (incident #10), skip_base",report_bundle_20260801_1611/trials.csv:7
+7,2026-07-28,hand-placed,GRASP_OK,0.1532,True,contact,"trial 7, repeat, hand-placed",report_bundle_20260801_1611/trials.csv:8
+8,,,,,,,no record,"report_bundle_20260801_1611/trials.csv (gap: file jumps from trial 7 at line 8 to trial 9 at line 9, no trial-8 row exists anywhere; see report_assets/figure_audit/contradictions.md:40-45)"
+9,2026-08-01,fully autonomous,GRASP_OK,0.142,True,contact,"trial 9, fully autonomous: servo 46.9->12.7px + lift patch, peek capture, no hand-placing",report_bundle_20260801_1611/trials.csv:9
+10,2026-08-01,fully autonomous,GRASP_OK,0.1418,True,contact,"trial 10, autonomous repeat",report_bundle_20260801_1611/trials.csv:10
+11,2026-08-01,fully autonomous,GRASP_OK,0.1416,True,contact,"trial 11, autonomous, probe (306.6,264.6) blob 11598px - detector may be over-segmenting",report_bundle_20260801_1611/trials.csv:11
+12,2026-08-01,fully autonomous,GRASP_OK,0.1418,True,contact,"trial 12, servo residual 17.4px (~12mm), v-axis limited by base deadband",report_bundle_20260801_1611/trials.csv:12

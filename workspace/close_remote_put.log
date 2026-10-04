@@ -1,0 +1,35 @@
+grasps: 25   keys: ['poses', 'scores', 'dist_to_aff', 'aff_center_3d', 'quality_score', 'affordance_score', 'combined_score']
+cloud key 'points': 244396 pts
+gap map: 9 points
+[constraints] from constraints.json
+plane_z=0.449  obj_top=0.476  obj_pts=3751
+scene median part_width = 0.0898 m  (artifact guard: reject >30% deviation)
+[policy] stability=med, motion=translate -> force=standard(effort 0.30, hold +0.008 rad), depth_frac=0.45, clearance=0.020 m, lift=0.10 m
+g0   w=0.1094  cage=0.125   motor=1.159  close_z=0.4506  force=standard ok=0 WIDTH GATE: exceeds aperture
+g1   w=0.1032  cage=0.1232  motor=1.128  close_z=0.4506  force=standard ok=1 
+g2   w=0.1004  cage=0.1204  motor=1.077  close_z=0.4506  force=standard ok=1 
+g3   w=0.0962  cage=0.1162  motor=1.004  close_z=0.4506  force=standard ok=1 
+g4   w=0.0893  cage=0.1093  motor=0.92   close_z=0.4506  force=standard ok=1 
+g5   w=0.1167  cage=0.125   motor=1.159  close_z=0.4506  force=standard ok=0 WIDTH GATE: exceeds aperture
+g6   w=0.1014  cage=0.1214  motor=1.096  close_z=0.4506  force=standard ok=1 
+g7   w=0.1069  cage=0.125   motor=1.159  close_z=0.4506  force=standard ok=0 WIDTH GATE: exceeds aperture
+g8   w=0.1441  cage=0.125   motor=1.159  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 144mm vs scene median 90mm WIDTH GATE: exceeds aperture
+g9   w=0.1011  cage=0.1211  motor=1.091  close_z=0.4506  force=standard ok=1 
+g10  w=0.105   cage=0.125   motor=1.158  close_z=0.4506  force=standard ok=1 
+g11  w=0.0544  cage=0.0744  motor=0.322  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 54mm vs scene median 90mm
+g12  w=0.04    cage=0.06    motor=0.068  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 40mm vs scene median 90mm
+g13  w=0.0549  cage=0.0749  motor=0.333  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 55mm vs scene median 90mm
+g14  w=0.0742  cage=0.0942  motor=0.713  close_z=0.4506  force=standard ok=1 
+g15  w=0.0989  cage=0.1189  motor=1.052  close_z=0.4506  force=standard ok=1 
+g16  w=0.067   cage=0.087   motor=0.595  close_z=0.4506  force=standard ok=1 
+g17  w=0.0504  cage=0.0704  motor=0.244  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 50mm vs scene median 90mm
+g18  w=0.046   cage=0.066   motor=0.166  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 46mm vs scene median 90mm
+g19  w=0.0852  cage=0.1052  motor=0.869  close_z=0.4506  force=standard ok=1 
+g20  w=0.0752  cage=0.0952  motor=0.73   close_z=0.4506  force=standard ok=1 
+g21  w=0.0898  cage=0.1098  motor=0.925  close_z=0.4506  force=standard ok=1 
+g22  w=0.0434  cage=0.0634  motor=0.122  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 43mm vs scene median 90mm
+g23  w=0.0436  cage=0.0636  motor=0.126  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 44mm vs scene median 90mm
+g24  w=0.1431  cage=0.125   motor=1.159  close_z=0.4506  force=standard ok=0 WIDTH ARTIFACT: 143mm vs scene median 90mm WIDTH GATE: exceeds aperture
+
+wrote close_params.csv  (13/25 ok)   constraints source: constraints.json
+scp close_params.csv to the workstation alongside place_run.csv

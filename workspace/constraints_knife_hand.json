@@ -1,0 +1,12 @@
+{
+  "instruction": "hand me the knife",
+  "target_object": "knife",
+  "target_part": "handle",
+  "constraints": {
+    "keep_clear": [],
+    "keep_clear_reasons": [],
+    "post_grasp_motion": "handover",
+    "stability_priority": "med",
+    "thermal_or_hygiene": null
+  }
+}

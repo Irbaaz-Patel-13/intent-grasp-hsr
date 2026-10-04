@@ -1,0 +1,12 @@
+components found: ['lateral_protrusion', 'lateral_protrusion_1', 'main_body', 'top_protrusion']
+[som_part_selection] candidate order: largest-first (fallback -- object not elongated)
+wrote crop -> report_assets\figures\fig_stage3c_point_crop_mug_head_near.png  (origin=(236, 302) size=(99, 59))
+
+--- prompt (DRY -- no API call made) ---
+The image shows an object a robot is about to grasp.
+Instruction: "pour me a coffee"
+Identify up to 3 points on the object where the robot should place its gripper.
+Give each point in normalised coordinates on a 0-1000 scale, where x=0 is the left edge, x=1000 the right edge, y=0 the top edge, y=1000 the bottom edge of THIS image.
+Respond ONLY with JSON:
+{"points": [[x, y], ...], "reason": "<short>"}
+If no point on this object is appropriate for the instruction, return {"points": [], "reason": "<short>"}.
