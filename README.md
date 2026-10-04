@@ -2,11 +2,11 @@
 
 A Toyota HSR that works out what to pick up, and where to hold it, from an instruction that never names the object.
 
-Say "I'd like a hot drink" and the robot has to decide that it wants the mug, that the handle is the sensible part to grab, and that it shouldn't hand the hot rim to a person. This repository is the code, data and figures from my MSc Robotics dissertation at Heriot-Watt University (supervised by Dr. Mauro Dragone). It runs on a real robot, not only in simulation.
+Say "I'd like a hot drink" and the robot has to work out that it wants the red mug, that it should hold it by the handle because the mug may be hot, and that the rim has to stay clear so you can drink from it. That's the actual output from the run logged on 7 Aug 2026. This repository is the code, data and figures from my MSc Robotics dissertation at Heriot-Watt University (supervised by Dr. Mauro Dragone). It runs on a real robot, not only in simulation.
 
 The starting point was the AffordGrasp paper by Tang et al. (IROS 2025, [arXiv:2503.00778](https://arxiv.org/abs/2503.00778)). I reimplemented its reasoning idea, then spent most of the project on the parts that broke when I moved it onto real hardware. This is an independent project and isn't affiliated with the paper's authors.
 
-![System architecture](docs/images/architecture.png)
+![Pipeline from instruction to verified lift](docs/images/pipeline.png)
 
 ## How it works
 
@@ -19,28 +19,48 @@ The pipeline has four stages.
 
 Perception and the GPT-4o calls run on a Windows PC with a CUDA GPU. Anything that talks to the robot runs on the HSR workstation under ROS Noetic. The two sides swap `.npz` files over `scp`.
 
-![Pipeline summary](docs/images/pipeline_summary.png)
-
 ## What I found
 
-The headline numbers, all measured on real captures or the real robot:
+Everything below was measured on real captures or the real robot. The charts are rebuilt from the recorded files by [`figures/readme/make_readme_figures.py`](figures/readme/make_readme_figures.py), so no number in them is typed in by hand.
 
-- Picking the right object from intent works well. Across 13 scene and instruction pairs, each repeated five times, GPT-4o chose the correct object 61 of 65 times (94%). Every miss was the same kind of mistake. In a scene with a mug and a pot, "I'd like a hot drink" sometimes became "a container" in step 1, and then the pot looked like a fine answer.
-- Text-prompted part segmentation basically doesn't work here. Asking LangSAM for "the handle" or "the blade" returned a mask covering 86–97% of the whole object. Three different knife instructions all came back at 97%. That result is why the geometric decomposition exists.
-- The wording of the prompt mattered more than I expected. In the first version, "hand me the knife" chose the handle, which means offering the blade to the person. Adding one paragraph about the receiver's point of view changed the chosen part for 4 of 6 objects. One case (the pan) still contradicts itself, and I've left it in the results.
-- On hardware, 11 logged trials gave 8 successful grasps and lifts. Trials 9 to 12 ran fully autonomously and all succeeded, with lift heights within 0.4 mm of each other. The visual servo brought the gripper from 46.9 px to 12.7 px off target in four iterations.
+### Picking the object works
 
-![Hardware trial history](docs/images/hardware_trials.png)
+Across 13 scene and instruction pairs, each repeated five times, GPT-4o chose the intended object 61 of 65 times (94%). All four misses happened the same way. With a mug and a pot on the table, step 1 turned "I'd like a hot drink" into something too general ("a container" three times, "a drink preparation appliance" once), and from there the pot looked like a fine answer.
 
-| Part-mask coverage from LangSAM | Effect of the receiver-aware handover prompt |
-|---|---|
-| ![Mask coverage](docs/images/mask_coverage.png) | ![Handover ablation](docs/images/handover_ablation.png) |
+![Object identification across 65 runs](docs/images/identification.png)
+
+### Finding the part with text prompts doesn't
+
+Asking LangSAM for a part ("handle", "sides", "middle section") gave back a mask covering 86–97% of the object mask. All three knife instructions asked for the handle and all three came back at 97%. In the logged knife image the "handle" mask sits on the blade. That's why the part is found geometrically instead.
+
+![LangSAM part masks collapse onto the object](docs/images/part_grounding.png)
+
+### The prompt decides what gets handed over
+
+In the first version of the step-3 prompt, "hand me the X" picked the handle for 4 of the 6 objects. For a knife that means offering the blade to the person. Adding one paragraph asking the model to think about the person receiving the object changed the grasped part for 4 of the 6 objects:
+
+| object | first prompt grasps | receiver-aware prompt grasps | keeps clear for the person |
+|---|---|---|---|
+| knife | handle | blade spine | handle |
+| mug | handle | body | handle |
+| hammer | handle | head | handle |
+| bottle | neck | body | neck |
+| bowl | rim | rim | interior |
+| pan | handle | handle | handle |
+
+The pan still contradicts itself: it grasps the handle and also says to keep the handle clear. I left it in because it shows the contract check doesn't catch everything.
+
+### On the robot
+
+Of 11 logged trials, 8 grasped and lifted the mug. The four trials on 1 Aug ran fully autonomously and all succeeded, with lift heights within 0.4 mm of each other. In trial 9 the visual servo brought the gripper from 46.9 px to 12.7 px off target before closing.
+
+![Hardware trials](docs/images/hardware_trials.png)
 
 ## Limitations
 
 - `temperature=0` doesn't make GPT-4o deterministic. Two identical runs disagreed during development, which is why `vlm_stability.py` exists and why the numbers above come from five repeats instead of one pass.
 - The geometric decomposition only sees what the depth camera resolves. Thin parts like a mug handle seen edge-on can fall under the evidence floor (60 points or 6 mm), and then the system refuses instead of guessing.
-- Most of the hardware trials use one object (a mug) on one table. The clutter scenes were tested for perception and reasoning, not for full grasp execution.
+- The hardware trials used one object (the red mug) on one table. The clutter scenes were tested for perception and reasoning, not for full grasp execution.
 - Trial 8 has no record in `trials.csv`. I left the gap rather than renumbering.
 - Handle-side grasps on a mug are often out of reach for the HSR's wrist, which pushed the relocation trials toward body grasps.
 
@@ -54,6 +74,7 @@ scripts/
   experiments/         studies behind the results (VLM grid, identification stability, batch scenes...)
   tools/               one-off diagnostics and visualisers
 figures/
+  readme/              builds the four README charts from workspace/ data
   dissertation/        scripts for the dissertation figures (output in figures/out/)
   presentation/        scripts for the defence slides (output in workspace/generated_assets/)
 tests/                 figure, data and part-decomposition tests
@@ -107,9 +128,12 @@ To reproduce the experiments, run `vlm_identify.py`, `vlm_stability.py`, `vlm_gr
 To rebuild the figures from the recorded data:
 
 ```bash
+python ../figures/readme/make_readme_figures.py         # the charts in this README
 python ../figures/presentation/fig01_acquisition.py   # likewise fig02..fig12, then fig13
 python ../figures/dissertation/fig_5_1_mask_coverage.py
 ```
+
+The `presentation/` and `dissertation/` scripts are kept so the results can be traced back to their sources. Several of their layouts were never polished, so I'd treat the README charts and `docs/presentation.pdf` as the versions to look at.
 
 To run the tests, from the repository root:
 
