@@ -20,8 +20,8 @@ import os, json, sys
 
 from intent_grasp.config import VLMConfig
 from intent_grasp.affordance_reasoning import (AffordanceReasoner,
-from intent_grasp.paths import WORKSPACE
                                   ObjectIdentificationResult)
+from intent_grasp.paths import WORKSPACE
 
 HANDOVER_CELLS = [
     ("mug",    "Hand me the mug"),
