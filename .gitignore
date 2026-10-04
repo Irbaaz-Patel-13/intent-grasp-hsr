@@ -22,3 +22,4 @@ workspace/portfolio_figures/
 workspace/results/
 figures/out/
 *.mp4
+!docs/media/*.mp4

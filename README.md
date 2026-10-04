@@ -6,6 +6,10 @@ Say "I'd like a hot drink" and the robot has to work out that it wants the red m
 
 The starting point was the AffordGrasp paper by Tang et al. (IROS 2025, [arXiv:2503.00778](https://arxiv.org/abs/2503.00778)). I reimplemented its reasoning idea, then spent most of the project on the parts that broke when I moved it onto real hardware. This is an independent project and isn't affiliated with the paper's authors.
 
+[![The HSR running the full pipeline, sped up 4x](docs/media/hsr_demo_preview.gif)](docs/media/hsr_demo.mp4)
+
+The robot running the whole pipeline on the real mug, sped up four times: perception, driving to the chosen base pose, positioning the arm, visual-servo alignment from the hand camera, then the grasp and lift. Click it for the full 96-second video.
+
 ![Pipeline from instruction to verified lift](docs/images/pipeline.png)
 
 ## How it works
@@ -23,11 +27,19 @@ Here's what that looks like for one real run. Every panel comes from the files t
 
 ![One real run from camera frame to robot pose](docs/images/real_run.png)
 
+And the same run as motion: the robot model at each commanded stage, stacked so you can see how it moved, from the stowed start to the lift.
+
+![The HSR at each stage of the run, onion-skinned](docs/images/motion.png)
+
 ## What I found
 
-Everything below was measured on real captures or the real robot. The charts are rebuilt from the recorded files by [`figures/readme/make_readme_figures.py`](figures/readme/make_readme_figures.py), so no number in them is typed in by hand.
+Everything below was measured on real captures or the real robot. Every figure is rebuilt from the recorded files by the scripts in [`figures/readme/`](figures/readme/), so no number in them is typed in by hand.
 
 ### Picking the object works
+
+These are the scenes the robot actually saw through its head camera, with the instruction it got and what it picked:
+
+![The real head-camera scenes and what the robot picked](docs/images/scenes.png)
 
 Across 13 scene and instruction pairs, each repeated five times, GPT-4o chose the intended object 61 of 65 times (94%). All four misses happened the same way. With a mug and a pot on the table, step 1 turned "I'd like a hot drink" into something too general ("a container" three times, "a drink preparation appliance" once), and from there the pot looked like a fine answer.
 
@@ -38,6 +50,10 @@ Across 13 scene and instruction pairs, each repeated five times, GPT-4o chose th
 Asking LangSAM for a part ("handle", "sides", "middle section") gave back a mask covering 86–97% of the object mask. All three knife instructions asked for the handle and all three came back at 97%. In the logged knife image the "handle" mask sits on the blade. That's why the part is found geometrically instead.
 
 ![LangSAM part masks collapse onto the object](docs/images/part_grounding.png)
+
+Finding the part from the point cloud has its own limit, and it's set by the sensor. Seen side-on from the head camera, the mug's handle comes back as two thin slivers of 53 and 36 points. Both fall under the 60-point, 6 mm evidence gate, so the robot refuses to use the handle instead of guessing at it:
+
+![The real mug point cloud split into parts, with the handle refused](docs/images/handle_gate.png)
 
 ### The prompt decides what gets handed over
 
@@ -53,6 +69,14 @@ In the first version of the step-3 prompt, "hand me the X" picked the handle for
 | pan | handle | handle | handle |
 
 The pan still contradicts itself: it grasps the handle and also says to keep the handle clear. I left it in because it shows the contract check doesn't catch everything.
+
+### The task also changes how it holds
+
+The constraints from step 3 don't just pick the part. They also set how hard the gripper squeezes, how far it lifts and whether it turns to offer the object afterwards. Here are the real settings for three knife tasks and three remote tasks, drawn to scale:
+
+![Grip settings per task, drawn to scale](docs/images/grips.png)
+
+Handing something over adds the move toward the person. The knife lifts twice as high when it's handed over or put away as when it's just picked up. The remote gets a gentler grip when it's being used or handed over than when it's put on a shelf.
 
 ### On the robot
 
@@ -101,7 +125,7 @@ figures/
 tests/                 figure, data and part-decomposition tests
 workspace/             real HSR captures, logged trials and recorded results; scripts read from here
 third_party/           submodules: Contact-GraspNet, HSR description and meshes, YCB objects
-docs/                  README images and the final presentation (presentation.pdf)
+docs/                  README images, the demo video (media/) and the final presentation (presentation.pdf)
 ```
 
 `workspace/` holds what the experiments actually produced: RGB-D captures from the HSR head camera, `trials.csv`, the VLM result tables and the experiment log from 7 Aug 2026. The figure scripts rebuild every chart from those files.
@@ -151,6 +175,7 @@ To rebuild the figures from the recorded data:
 ```bash
 python ../figures/readme/make_readme_figures.py         # the charts in this README
 python ../figures/readme/make_run_figure.py             # the one-real-run figure
+python ../figures/readme/make_story_figures.py          # scenes, handle gate, motion, grips
 python ../figures/presentation/fig01_acquisition.py   # likewise fig02..fig12, then fig13
 python ../figures/dissertation/fig_5_1_mask_coverage.py
 ```
