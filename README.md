@@ -2,7 +2,7 @@
 
 A Toyota HSR that works out what to pick up, and where to hold it, from an instruction that never names the object.
 
-Say "I'd like a hot drink" and the robot has to work out that it wants the red mug, that it should hold it by the handle because the mug may be hot, and that the rim has to stay clear so you can drink from it. That's the actual output from the run logged on 7 Aug 2026. This repository is the code, data and figures from my MSc Robotics dissertation at Heriot-Watt University (supervised by Dr. Mauro Dragone). It runs on a real robot, not only in simulation.
+Say "I'd like a hot drink" and the robot has to work out that it wants the red mug, that the handle is the part to hold, and that the mug may be hot. That's what it concluded in the run logged on 7 Aug 2026. It also decided the mug was going to be poured and kept the rim clear for that, which is wrong for a drinking request. I've kept that in the failure register rather than tidy it away. This repository is the code, data and figures from my MSc Robotics dissertation at Heriot-Watt University (supervised by Dr. Mauro Dragone). It runs on a real robot, not only in simulation.
 
 The starting point was the AffordGrasp paper by Tang et al. (IROS 2025, [arXiv:2503.00778](https://arxiv.org/abs/2503.00778)). I reimplemented its reasoning idea, then spent most of the project on the parts that broke when I moved it onto real hardware. This is an independent project and isn't affiliated with the paper's authors.
 
@@ -18,6 +18,10 @@ The pipeline has four stages.
 4. Execution. The HSR's 5-DoF arm can't reach most grasps from wherever the base happens to be standing, so a collision-aware planner picks a base pose first. On the recorded run none of the 25 candidates was reachable from the starting pose; after placement all 25 were. Execution then goes through gates: base settled, palm pose checked against forward kinematics, a visual-servo correction, a contact-stop close, and a lift that is checked with depth before the trial counts as a success.
 
 Perception and the GPT-4o calls run on a Windows PC with a CUDA GPU. Anything that talks to the robot runs on the HSR workstation under ROS Noetic. The two sides swap `.npz` files over `scp`.
+
+Here's what that looks like for one real run. Every panel comes from the files the run left behind: the camera frame, the fused point cloud, the 25 grasp candidates, the base-placement table and the joint angles. The robot in (d) is the HSR's URDF posed with the planner's actual solution, not an illustration.
+
+![One real run from camera frame to robot pose](docs/images/real_run.png)
 
 ## What I found
 
@@ -40,7 +44,7 @@ Asking LangSAM for a part ("handle", "sides", "middle section") gave back a mask
 In the first version of the step-3 prompt, "hand me the X" picked the handle for 4 of the 6 objects. For a knife that means offering the blade to the person. Adding one paragraph asking the model to think about the person receiving the object changed the grasped part for 4 of the 6 objects:
 
 | object | first prompt grasps | receiver-aware prompt grasps | keeps clear for the person |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | knife | handle | blade spine | handle |
 | mug | handle | body | handle |
 | hammer | handle | head | handle |
@@ -56,17 +60,34 @@ Of 11 logged trials, 8 grasped and lifted the mug. The four trials on 1 Aug ran 
 
 ![Hardware trials](docs/images/hardware_trials.png)
 
+### What broke on the robot, and how it was fixed
+
+Most of the hardware work was finding out what went wrong and closing it off. These are the execution failures from the project's failure register (`workspace/report_assets/FAILURE_REGISTER.csv`). Each one traces back to a specific log, trial or line of code.
+
+| what went wrong | what changed | checked on the robot afterwards? |
+| --- | --- | --- |
+| During multi-view capture the arm rose while still folded, then unfolded in the wrong order | fold and unfold reordered in the capture scripts | no separate re-test |
+| Wrist commands at the URDF limit (-1.92 rad) were silently rejected by the controller | wrist flex clamped to -1.90 rad; abort if there's less than 3 cm of lift headroom | no separate re-test |
+| Odometry reset without warning and a stale reference file drove the base toward the table between trials | guard that aborts when the reference is stale or near zero | yes, trial 6 |
+| Closing the gripper to a fixed position over-currented the motor against a held object | the gripper now stops closing on contact | no separate re-test |
+| Command latency on the first close step looked like contact | contact only counts after real finger travel | no separate re-test |
+| Trial 4: the mug was held but the lift faulted on over-current | stop earlier when resistance appears, plus a hold-margin option | yes, trial 5 |
+| On 1 Aug the arm-tuck move used before captures drove the arm into the floor | that script was retired and the capture scripts skip it | n/a |
+
+Trials 1 and 3 ended in aborts whose cause I never confirmed, so they stay marked as open.
+
 ## Limitations
 
 - `temperature=0` doesn't make GPT-4o deterministic. Two identical runs disagreed during development, which is why `vlm_stability.py` exists and why the numbers above come from five repeats instead of one pass.
 - The geometric decomposition only sees what the depth camera resolves. Thin parts like a mug handle seen edge-on can fall under the evidence floor (60 points or 6 mm), and then the system refuses instead of guessing.
 - The hardware trials used one object (the red mug) on one table. The clutter scenes were tested for perception and reasoning, not for full grasp execution.
+- On the knife, the decomposition labels the two ends the wrong way round, because the axis sign isn't tied to anything physical. The fix is worked out but not implemented.
 - Trial 8 has no record in `trials.csv`. I left the gap rather than renumbering.
 - Handle-side grasps on a mug are often out of reach for the HSR's wrist, which pushed the relocation trials toward body grasps.
 
 ## Repository layout
 
-```
+```text
 intent_grasp/          core library: reasoning, grounding, part decomposition, grasp generation, config
 scripts/
   pipeline/            PC side: capture conversion, grounding + grasping, export, closure parameters
@@ -74,7 +95,7 @@ scripts/
   experiments/         studies behind the results (VLM grid, identification stability, batch scenes...)
   tools/               one-off diagnostics and visualisers
 figures/
-  readme/              builds the four README charts from workspace/ data
+  readme/              builds the README figures from workspace/ data
   dissertation/        scripts for the dissertation figures (output in figures/out/)
   presentation/        scripts for the defence slides (output in workspace/generated_assets/)
 tests/                 figure, data and part-decomposition tests
